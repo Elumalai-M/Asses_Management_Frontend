@@ -1,0 +1,67 @@
+
+.card{
+    width: 530px;
+    height: 380px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 2px 2px rgba(196, 245, 247, 0.945);
+}
+.form-group {
+    padding-top: 15px; /* Adjust the value as needed */
+    margin-left: 22px;
+
+}
+.form-control {
+    height: 50px;
+    width: 95%;
+    border-radius: .25rem;
+}
+.btn-primary {
+    color: #fff;
+    background-color: rgb(7, 15, 43);
+    border-color:  rgb(7, 15, 43);
+    font-size: 16px; /* Change the value to adjust the font size */
+    font-weight: 500;
+}
+
+label {
+    font-size: 16px; /* Change the value to adjust the font size */
+    font-weight: 500;
+}
+input{
+    font-size: 16px; /* Change the value to adjust the font size */
+    font-weight: 300;
+}
+#error_msg{
+    font-size: 15px;
+    color: #e61818;
+}
+.error_field{
+    font-size: 14px;
+    color: #e61818;
+}
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white; /* Example color */
+    font-size: 24px; /* Example font size */
+}
+
+.col-md-4{
+    height: 100%;
+    background-color: rgb(237 235 233);
+}
+.col-md-8{
+    height: 100%;
+}
+.assest{
+    position: absolute; 
+    bottom: 90px; 
+    margin-left: 130px;
+    color: white;
+    height: 0;
+    width: 10;
+
+}

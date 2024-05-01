@@ -1,0 +1,14 @@
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table td {
+    padding: 8px;
+    vertical-align: top;
+    border: none;
+  }
+  
+  .custom-table strong {
+    font-weight: bold;
+  }

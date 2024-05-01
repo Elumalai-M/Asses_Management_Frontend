@@ -1,0 +1,10 @@
+
+mat-drawer-container {
+    min-height: 50px;
+    max-height: 500px; /* doesn't work*/
+    height: 100vh; /* doesn't work*/
+    /* height: 100vh; This Gives 100% View Height with a scrollbar*/
+}
+.mat-toolbar.mat-primary {
+    --mat-toolbar-container-background-color: #f4f5fc;
+}  

@@ -1,0 +1,81 @@
+<div class="table-container">
+    <div class="table-responsive">
+      <div class="tableHeader">
+        <button mat-raised-button Raised extended (click)="deleteSelectedEmployees()">Delete Selected</button>
+        <button mat-raised-button Raised extended (click)="createEmployees()">Add Employee</button>
+        <input type="text" [(ngModel)]="searchText" (input)="filterEmployeeData()" placeholder="Search by Name" />
+        <mat-icon class="cardView" (click)="toggleView()">view_module</mat-icon>
+        <input type="file" accept=".csv" class="uploadButton mat-raised-button Raised extended" (change)="onFileSelected($event)">
+        <button class="uploadButtons mat-raised-button Raised extended" (click)="uploadEmployeeData()">Upload Employee</button>
+      </div>
+      <div [ngClass]="viewMode === 'table' ? 'table-view' : 'card-view'">
+      <table class="table" *ngIf="viewMode === 'table'">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">No</th>
+            <th scope="col">Employee ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email ID</th>
+            <th scope="col">Date of Joining</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Designation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filterDataList; let i = index" >
+            <td>
+                <input type="checkbox" (change)="toggleSelection(employee)">
+              </td>
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ employee.employeeId }}</td>
+            <td>{{ employee.firstName }}</td>
+            <td>{{ employee.lastName }}</td>
+            <td>{{ employee.emailId }}</td>
+            <td>{{ employee.dateOfJoining }}</td>
+            <td>{{ employee.contactNumber }}</td>
+            <td>{{ employee.dateOfBirth }}</td>
+            <td>{{ employee.designation }}</td>
+            <td>
+              <button  (click)="navigateToDetails(employee.employeeId)">&gt;</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="viewMode === 'card'">
+        <!-- Card view content -->
+        <div *ngFor="let employee of filterDataList">
+          <!-- Card layout for each employee -->
+          <div class="card">
+            <div class="card-body">
+              <div class="chip">
+                <div class="img-avatar">
+                  <img
+                    src="https://gravatar.com/avatar/1a2e88d917a70ca43b39498ba1fc5d0a?s=80&d=https://static.codepen.io/assets/avatars/user-avatar-150x150-bdcd44a3bfb9a5fd01eb8b86f9e033fa1a9897c3a15b33adfc2649a002dab1b6.png"
+                    alt="card image"
+                  />
+                  <span class="status away"></span>
+                </div>
+                <div class="container">
+                  <div class="texts">
+                    <h3 class="elipsis">{{ employee.firstName }} {{ employee.lastName }}</h3>
+                    <div class="desc elipsis">Designation: {{ employee.designation }}</div>
+                    <div class="planned elipsis">
+                      <span><i class="fa fa-calendar">&nbsp;</i></span>Email: {{ employee.emailId }}
+                    </div>
+                  </div>
+                  <div class="vertical-line"></div>
+                  <button><i class="fa fa-edit"></i></button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  

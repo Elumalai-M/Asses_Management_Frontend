@@ -1,0 +1,61 @@
+<h2>Create Employee</h2>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="employeeId">Employee ID:</label>
+        <input type="text" id="employeeId" formControlName="employeeId" class="form-control" style="font-size: 16px;" required>
+      </div>
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control" required  style="font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control" required  style="font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" formControlName="emailId" class="form-control" required  style="font-size: 16px;">
+        <small *ngIf="email.invalid && (email.dirty || email.touched)" class="blocked p-error">
+          <div *ngIf="email.errors?.['required']" class="error_field">Email is required.</div>
+          <div *ngIf="email.errors?.['email']" class="error_field">Email should be valid.</div>
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" class="form-control" required  style="font-size: 16px;">
+        <small *ngIf="password.invalid && (password.dirty || password.touched)" class="blocked p-error">
+          <div *ngIf="password.errors?.['required']" class="error_field">Password is required.</div>
+        </small>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" formControlName="contactNumber" class="form-control" required  style="font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" formControlName="dateOfBirth" class="form-control" required  style="font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="doj">Date of Joining:</label>
+        <input type="date" id="doj" formControlName="dateOfJoining" class="form-control" required  style="font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="designation">Designation:</label>
+        <input type="text" id="designation" formControlName="designation" class="form-control" required  style="font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" class="form-control" required  style="font-size: 16px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <button type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary btn-large">Create Employee</button>
+    <div *ngIf="registerError" id="error_msg">{{ registerError }}</div>
+  </div>
+</form>

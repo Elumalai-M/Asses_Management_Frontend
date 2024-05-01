@@ -1,0 +1,33 @@
+<ng-container *ngIf="!router.url.includes('login'); else elseBlock">
+<mat-toolbar color="primary">
+	<mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+		<button mat-mini-fab class="menu-icon"  (click)="drawer.toggle()">
+      <mat-icon fxFlex fxHide="false" fxHide.xs>menu</mat-icon>
+      <mat-icon fxFlex fxShow="false" fxShow.xs>more_vert</mat-icon>
+		</button>
+		<span></span>
+		<div fxLayout="row" fxLayoutAlign="end center">
+		<button mat-button (click)="logout()">Logout</button>
+	</div>
+	</mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-drawer-container>
+	<mat-drawer fxFlex #drawer mode="side">
+		<mat-list>
+            <mat-list-item><button mat-button routerLink="/dashboard">Dashbord</button></mat-list-item>
+			<mat-list-item><button mat-button routerLink="/assest">Assest</button></mat-list-item>
+			<mat-list-item><button mat-button routerLink="/employee">Employee</button></mat-list-item>
+			<mat-list-item><button mat-button routerLink="/employee">Project</button></mat-list-item>
+
+		</mat-list>
+	</mat-drawer>
+	<mat-drawer-content>
+		<router-outlet></router-outlet>
+	</mat-drawer-content>
+</mat-drawer-container>
+</ng-container>
+<ng-template #elseBlock>
+	<router-outlet></router-outlet>	
+  </ng-template>

@@ -1,0 +1,39 @@
+<div class="table-container">
+    <div class="table-responsive">
+        <div class="tableHeader">
+            <button mat-raised-button Raised extended (click)="createAssest()">Create Assest</button>
+            <input type="text" [(ngModel)]="searchTxt" (input)="filterAssestData()" placeholder="Search" />
+            <i class="bi bi-list"></i> 
+          </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Assest Name</th>
+            <th scope="col">Managed By</th>
+            <th scope="col">Operational Status</th>
+            <th scope="col">Model Number</th>
+            <th scope="col">Serial Number</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Status</th>
+            <th scope="col">AssetType</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let assests of filterDataList; let i = index" (click)="navigateToDetails(assests.id)">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{  assests.assest.assetName }}</td>
+            <td>{{  assests.assest.managedBy }}</td>
+            <td>{{  assests.assest.operationalStatus }}</td>
+            <td>{{  assests.assest.modelNumber }}</td>
+            <td>{{  assests.assest.serialNumber }}</td>
+            <td>{{  assests.assest.brand }}</td>
+            <td>{{  assests.assest.cost }}</td>
+            <td>{{  assests.assest.status }}</td>
+            <td>{{  assests.assest.assetType }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

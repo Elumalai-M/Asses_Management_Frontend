@@ -1,0 +1,156 @@
+<form [formGroup]="Empregister" (ngSubmit)="HandleSubmit()">
+  <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="Assestform">
+        <div formGroupName="assest">
+          <ng-template matStepLabel>Assest Basic Details</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Assest Id</mat-label>
+            <input matInput placeholder="AssetId" formControlName="assetId" >
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Asset Name</mat-label>
+              <input matInput placeholder="Asset Name" formControlName="assetName" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Managed By</mat-label>
+              <input matInput placeholder="Managed By" formControlName="managedBy" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Model Number</mat-label>
+              <input matInput placeholder="ModelNumber" formControlName="modelNumber" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Serial Number</mat-label>
+              <input matInput placeholder="SerialNumber" formControlName="serialNumber" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Brand</mat-label>
+              <input matInput placeholder="Brand" formControlName="brand" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Cost</mat-label>
+              <input matInput placeholder="Cost" formControlName="cost" >
+            </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+      </div>
+      </mat-step>
+      <mat-step [stepControl]="Assestform">
+        <div formGroupName="assest">
+          <ng-template matStepLabel>Assest Status Details</ng-template>
+          
+           <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" placeholder="Status">
+              <mat-option *ngFor="let option of status" [value]="option">{{ option }}</mat-option>
+            </mat-select>  
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Operational Status</mat-label>
+              <mat-select formControlName="operationalStatus" placeholder="Operational Status">
+                <mat-option *ngFor="let option of operationalStatus" [value]="option">{{ option }}</mat-option>
+              </mat-select>  
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Asset Type</mat-label>
+              <mat-select formControlName="assetType" placeholder="Category">
+                <mat-option *ngFor="let option of assestType" [value]="option">{{ option }}</mat-option>
+              </mat-select>            
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category" placeholder="Category">
+                <mat-option *ngFor="let option of categoryOptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Device</mat-label>
+              <mat-select placeholder="Device">
+                <mat-option *ngFor="let option of device" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button mat-raised-button color="primary" matStepperPrevious>Back</button> | 
+              <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+      </div>
+      </mat-step>
+      <mat-step [stepControl]="FixedAssestform"  label="Fill out contact info">
+        <div formGroupName="fixedassest">
+          <ng-template matStepLabel>Fixed Assest Details</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Color</mat-label>
+            <input matInput placeholder="color" formControlName="color" >
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Graphics Card</mat-label>
+              <input matInput placeholder="graphicsCard" formControlName="graphicsCard" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>RAM</mat-label>
+              <input matInput placeholder="ram" formControlName="ram" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Rom</mat-label>
+              <input matInput placeholder="rom" formControlName="rom" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Material</mat-label>
+              <input matInput placeholder="material" formControlName="material" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>os</mat-label>
+                <input matInput placeholder="os" formControlName="os" >
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>OSVersion</mat-label>
+                <input matInput placeholder="osVersion" formControlName="osVersion" >
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Battery</mat-label>
+                <input matInput placeholder="battery" formControlName="battery" >
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>ChargerType</mat-label>
+                <input matInput placeholder="chargerType" formControlName="chargerType" >
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                  <mat-label>Wireless</mat-label>
+                  <input matInput placeholder="wireless" formControlName="wireless" >
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Weight</mat-label>
+                  <input matInput placeholder="weight" formControlName="weight" >
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Dimension</mat-label>
+                  <input matInput placeholder="dimension" formControlName="dimension" >
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>ipAddress</mat-label>
+                  <input matInput placeholder="ipAddress" formControlName="ipAddress" >
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>ConnectorType</mat-label>
+                    <input matInput placeholder="connectorType" formControlName="connectorType" >
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>BluetoothVersion</mat-label>
+                    <input matInput placeholder="bluetoothVersion" formControlName="bluetoothVersion" >
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>ChargingTime</mat-label>
+                    <input matInput placeholder="chargingTime" formControlName="chargingTime" >
+                  </mat-form-field>
+          <div>
+            <div>
+              <button mat-raised-button color="primary" matStepperPrevious>Back</button> | 
+              <button mat-raised-button (click)="HandleSubmits()" color="accent" >Submit</button>
+            </div>
+          </div>
+      </div>
+      </mat-step>
+  
+    </mat-stepper>
+  </form>

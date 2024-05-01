@@ -1,0 +1,221 @@
+
+<div *ngIf="assestDataList">
+    <h2>Asset Details</h2>
+    <div *ngIf="!isEditMode">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><strong>ID:</strong></td>
+          <td>{{ assestDataList.id }}</td>
+        </tr>
+        <tr>
+          <td><strong>Color:</strong></td>
+          <td>{{ assestDataList.color }}</td>
+        </tr>
+        <tr>
+          <td><strong>Graphics Card:</strong></td>
+          <td>{{ assestDataList.graphicsCard }}</td>
+        </tr>
+        <tr>
+          <td><strong>RAM:</strong></td>
+          <td>{{ assestDataList.ram }}</td>
+        </tr>
+        <tr>
+          <td><strong>ROM:</strong></td>
+          <td>{{ assestDataList.rom }}</td>
+        </tr>
+        <tr>
+          <td><strong>Processor:</strong></td>
+          <td>{{ assestDataList.processor }}</td>
+        </tr>
+        <tr>
+          <td><strong>Material:</strong></td>
+          <td>{{ assestDataList.material }}</td>
+        </tr>
+        <tr>
+          <td><strong>OS:</strong></td>
+          <td>{{ assestDataList.os }}</td>
+        </tr>
+        <tr>
+          <td><strong>OS Version:</strong></td>
+          <td>{{ assestDataList.osVersion }}</td>
+        </tr>
+        <tr>
+          <td><strong>Battery:</strong></td>
+          <td>{{ assestDataList.battery }}</td>
+        </tr>
+        <tr>
+          <td><strong>Charger Type:</strong></td>
+          <td>{{ assestDataList.chargerType }}</td>
+        </tr>
+        <tr>
+          <td><strong>Wireless:</strong></td>
+          <td>{{ assestDataList.wireless ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+          <td><strong>Weight:</strong></td>
+          <td>{{ assestDataList.weight }} grams</td>
+        </tr>
+        <tr>
+          <td><strong>Dimensions:</strong></td>
+          <td>{{ assestDataList.dimension }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Asset ID:</strong></td>
+            <td>{{ assestDataList.assest.assetId }}</td>
+          </tr>
+          <tr>
+            <td><strong>Asset Name:</strong></td>
+            <td>{{ assestDataList.assest.assetName }}</td>
+          </tr>
+          <tr>
+            <td><strong>Managed By:</strong></td>
+            <td>{{ assestDataList.assest.managedBy }}</td>
+          </tr>
+          <tr>
+            <td><strong>Model Number:</strong></td>
+            <td>{{ assestDataList.assest.modelNumber }}</td>
+          </tr>
+          <tr>
+            <td><strong>Serial Number:</strong></td>
+            <td>{{ assestDataList.assest.serialNumber }}</td>
+          </tr>
+          <tr>
+            <td><strong>Brand:</strong></td>
+            <td>{{ assestDataList.assest.brand }}</td>
+          </tr>
+          <tr>
+            <td><strong>Cost:</strong></td>
+            <td>{{ assestDataList.assest.cost }}</td>
+          </tr>
+          <tr>
+            <td><strong>Status:</strong></td>
+            <td>{{ assestDataList.assest.status }}</td>
+          </tr>
+          <tr>
+            <td><strong>Operational Status:</strong></td>
+            <td>{{ assestDataList.assest.operationalStatus }}</td>
+          </tr>
+          <tr>
+            <td><strong>Asset Type:</strong></td>
+            <td>{{ assestDataList.assest.assetType }}</td>
+          </tr>
+          <tr>
+            <td><strong>Category:</strong></td>
+            <td>{{ assestDataList.assest.category }}</td>
+          </tr>
+        <!-- Add more properties as needed -->
+      </tbody>
+    </table>
+    <button (click)="enableEditMode()">Edit</button>
+    </div>
+  </div>
+  <div *ngIf="isEditMode">
+    <table class="custom-table">
+      <tbody>
+        <tr>
+          <td><strong>ID:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.id"></td>
+        </tr>
+        <tr>
+          <td><strong>Color:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.color"></td>
+        </tr>
+        <tr>
+          <td><strong>Graphics Card:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.graphicsCard"></td>
+        </tr>
+        <tr>
+          <td><strong>RAM:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.ram"></td>
+        </tr>
+        <tr>
+          <td><strong>ROM:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.rom"></td>
+        </tr>
+        <tr>
+          <td><strong>Processor:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.processor"></td>
+        </tr>
+        <tr>
+          <td><strong>Material:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.material"></td>
+        </tr>
+        <tr>
+          <td><strong>OS:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.os"></td>
+        </tr>
+        <tr>
+          <td><strong>OS Version:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.osVersion"></td>
+        </tr>
+        <tr>
+          <td><strong>Battery:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.battery"></td>
+        </tr>
+        <tr>
+          <td><strong>Charger Type:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.chargerType"></td>
+        </tr>
+        <tr>
+          <td><strong>Wireless:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.wireless"></td>
+        </tr>
+        <tr>
+          <td><strong>Weight:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.weight"></td>
+        </tr>
+        <tr>
+          <td><strong>Dimensions:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.dimension"></td>
+        </tr>
+        <tr>
+          <td><strong>Asset ID:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.assetId"></td>
+        </tr>
+        <tr>
+          <td><strong>Asset Name:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.assetName"></td>
+        </tr>
+        <tr>
+          <td><strong>Managed By:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.managedBy"></td>
+        </tr>
+        <tr>
+          <td><strong>Model Number:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.modelNumber"></td>
+        </tr>
+        <tr>
+          <td><strong>Serial Number:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.serialNumber"></td>
+        </tr>
+        <tr>
+          <td><strong>Brand:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.brand"></td>
+        </tr>
+        <tr>
+          <td><strong>Cost:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.cost"></td>
+        </tr>
+        <tr>
+          <td><strong>Status:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.status"></td>
+        </tr>
+        <tr>
+          <td><strong>Operational Status:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.operationalStatus"></td>
+        </tr>
+        <tr>
+          <td><strong>Asset Type:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.assetType"></td>
+        </tr>
+        <tr>
+          <td><strong>Category:</strong></td>
+          <td><input type="text" [(ngModel)]="assestDataList.assest.category"></td>
+        </tr>
+       </tbody>
+       </table>
+       <button (click)="saveChanges()">Save</button>
+       <button (click)="cancelEdit()">Cancel</button>
+  </div>

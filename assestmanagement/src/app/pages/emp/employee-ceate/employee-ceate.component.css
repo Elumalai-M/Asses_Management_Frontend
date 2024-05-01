@@ -1,0 +1,15 @@
+.form-control{
+    height: 40px;
+}
+.btn-large {
+    font-size: 12px; /* Adjust the font size as needed */
+    padding: 10px 20px; /* Adjust the padding for height and width */
+}
+.error_field{
+    font-size: 14px;
+    color: #e61818;
+}
+#error_msg{
+    font-size: 15px;
+    color: #e61818;
+}
