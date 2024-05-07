@@ -1,0 +1,36 @@
+.fluid-container  {
+    margin: 20px;
+    padding-left: 2rem;
+}
+.card {
+    height: 210px; 
+    width: 360px;
+    border-radius: 10px; 
+    
+}
+
+.bg-gradient-danger {
+    background: linear-gradient(to right, #ffbf96, #fe7096) !important;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.card-img-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+.card-title{
+    color: white;
+    font-family: "ubuntu-regular";
+    padding-left: 10px;
+    font-size: 30px;
+}
+.card-text{
+    color: white;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
