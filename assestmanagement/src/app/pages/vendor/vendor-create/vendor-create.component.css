@@ -1,0 +1,56 @@
+/* app.component.css */
+.form-container {
+  width: 300px;
+  margin: auto;
+}
+
+.form-header {
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.form-control {
+  width: 100%; /* Adjust the width as per your requirement */
+  height: 40px; /* Adjust the height as per your requirement */
+  /* Add any other styles you want */
+}
+
+.back-button {
+  background-color: green;
+  color: white;
+  /* Other styles for the back button */
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+.submit-button {
+  background-color: rgb(16, 92, 255);
+  color: white;
+  /* Other styles for the submit button */
+}
+
+/* Adjust the alignment of items within each row */
+.table-content .row {
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.button {
+  background-color: blue; /* Corrected spelling */
+  margin-left: auto; /* Align button to right */
+  margin-right: 15px; /* Add some space from the right */
+}
+
+input {
+  font-size: 16px; /* Change the value to adjust the font size */
+  font-weight: 300;
+}

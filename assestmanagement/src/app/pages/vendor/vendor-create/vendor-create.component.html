@@ -1,0 +1,52 @@
+<div class="container-xl">
+  <div class="table-responsive">
+      <div class="table-wrapper">
+          <div class="table-title">
+              <div class="row">
+                  <div class="col-md-6">
+                      <h4><b>Vendor Details</b></h4>
+                  </div>
+                  <div class="col-md-6 text-md-right">
+                      <a href="#" routerLink="/vendorlist" class="btn btn-success back back-button"><i
+                              class='fas fa-arrow-circle-left'></i> Back</a>
+                  </div>
+              </div>
+          </div>
+          <form [formGroup]="vendorForm" (ngSubmit)="onSubmit()" class="table-content">
+              <div class="form-group p-10 row">
+                  <label for="vendorName" class="col-sm-3 col-form-label">Vendor Name</label>
+                  <div class="col-sm-9">
+                      <input type="text" class="form-control" id="vendorName" formControlName="vendorName">
+                  </div>
+              </div>
+              <div class="form-group p-10 row">
+                  <label for="email" class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-9">
+                      <input type="text" class="form-control" id="email" formControlName="email">
+                  </div>
+              </div>
+              <div class="form-group p-10 row">
+                  <label for="poc" class="col-sm-3 col-form-label">Point of Contact</label>
+                  <div class="col-sm-9">
+                      <input type="text" class="form-control" id="poc" formControlName="poc">
+                  </div>
+              </div>
+              <div class="form-group p-10 row">
+                  <label for="contactNumber" class="col-sm-3 col-form-label">Contact Number</label>
+                  <div class="col-sm-9">
+                      <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber">
+                  </div>
+              </div>
+              <!-- <div class="form-group p-10 row">
+                  <label for="status" class="col-sm-3 col-form-label">Status</label>
+                  <div class="col-sm-9">
+                      <input type="checkbox" id="status" formControlName="status">
+                  </div>
+              </div> -->
+              <div class="table-footer">
+                  <button class="btn btn-success submit-button" type="submit">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
