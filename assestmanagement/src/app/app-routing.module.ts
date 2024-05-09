@@ -9,6 +9,9 @@ import { AssetviewComponent } from './pages/assest/view/assetview/assetview.comp
 import { AssestdetailComponent } from './pages/assest/assestdetail/assestdetail/assestdetail.component';
 import { EmployeeDetailComponent } from './pages/emp/employ/employee-detail/employee-detail.component';
 import { EmployeeCeateComponent } from './pages/emp/employee-ceate/employee-ceate.component';
+import { VendorlistComponent } from './pages/vendorlist/vendorlist.component';
+import { create } from 'domain';
+import { VendorCreateComponent } from './pages/vendor/vendor-create/vendor-create.component';
 
 const routes: Routes = [
   {component:LoginComponent,path: "login"},
@@ -20,6 +23,8 @@ const routes: Routes = [
   {component:AssestdetailComponent,path: "assestdetail"},
   {component:EmployeeDetailComponent,path: "employeeDetail"},
   {component:EmployeeCeateComponent,path: "employeeCreate"},
+  {component:VendorlistComponent,path: "vendorlist"},
+  {component:VendorCreateComponent, path :"vendorcreate"},
   { path: 'employeeDetail/:employee', component: EmployeeDetailComponent },
   { path: 'assestdetail/:asset', component: AssestdetailComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' } // Default route
