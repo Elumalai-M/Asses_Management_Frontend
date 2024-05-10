@@ -274,7 +274,7 @@ get osform(){
 
 selectedStatus:status[]=[
  {value: 'ASSIGNED',viewValue:'Assigned'},
-  {value: 'NOT_ASSIGNED',viewValue:'Not Assigned'}
+  {value: 'UNASSIGNED',viewValue:'Not Assigned'}
 ];
 
 selectedOperation:status[]=[
