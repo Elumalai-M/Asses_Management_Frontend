@@ -1,12 +1,12 @@
 <div class="table-container">
     <div class="table-responsive">
       <div class="tableHeader">
-        <button mat-raised-button Raised extended (click)="deleteSelectedEmployees()">Delete Selected</button>
-        <button mat-raised-button Raised extended (click)="createEmployees()">Add Employee</button>
+        <button mat-raised-button Raised extended (click)="deleteSelectedEmployees()" style="background-color: rgb(245, 37, 37);">Delete Selected</button>
+        <button mat-raised-button Raised extended (click)="createEmployees()" style="background-color: rgba(29, 245, 58, 0.836);">Add Employee</button>
         <input type="text" [(ngModel)]="searchText" (input)="filterEmployeeData()" placeholder="Search by Name" />
         <mat-icon class="cardView" (click)="toggleView()">view_module</mat-icon>
         <input type="file" accept=".csv" class="uploadButton mat-raised-button Raised extended" (change)="onFileSelected($event)">
-        <button class="uploadButtons mat-raised-button Raised extended" (click)="uploadEmployeeData()">Upload Employee</button>
+        <button class="uploadButtons mat-raised-button Raised extended" (click)="uploadEmployeeData()" style="background-color: rgb(240, 64, 166);">Upload Employee</button>
       </div>
       <div [ngClass]="viewMode === 'table' ? 'table-view' : 'card-view'">
       <table class="table" *ngIf="viewMode === 'table'">

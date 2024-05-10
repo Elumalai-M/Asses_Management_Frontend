@@ -1,4 +1,4 @@
-import { Assest } from "./AssestData";
+import { Asset } from "./AssestData";
 
 export interface AssestDatas{
     id: number;
@@ -27,5 +27,5 @@ export interface AssestDatas{
     simNumber: string;
     imeiNumber: string;
     generation: string;
-    assest: Assest;
+    assest: Asset;
 }

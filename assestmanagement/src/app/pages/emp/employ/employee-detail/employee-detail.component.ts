@@ -19,7 +19,7 @@ export class EmployeeDetailComponent {
     private employeeService:EmployeeServiceService,
     private route:ActivatedRoute
   ){
-    this.editedEmployee = { ...this.employeeData }; // Create a copy for editing
+    this.editedEmployee = { ...this.employeeData }; 
 
   }
 
@@ -47,6 +47,7 @@ export class EmployeeDetailComponent {
   }
 
   saveChanges() {
+    console.log('updateEmployee',this.employeeData);
     this.employeeService.updateEmlpoyeetData(this.employeeData as EmployeeData).subscribe(
       (response) => {
         console.log('Employee data updated successfully:', response);

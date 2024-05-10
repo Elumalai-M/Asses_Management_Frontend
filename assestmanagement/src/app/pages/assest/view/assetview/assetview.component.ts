@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AssestDatas } from '../../../../interfaces/AssestDatas';
 import { AssestService } from '../../../../services/assest.service';
+import { AssetData } from '../../../../interfaces/AssestData';
 
 @Component({
   selector: 'app-assetview',
@@ -10,9 +10,10 @@ import { AssestService } from '../../../../services/assest.service';
 })
 export class AssetviewComponent {
   searchTxt: string = '';
-
-  assestDataList: AssestDatas[] = [];
-  filterDataList: AssestDatas[] = [];
+  display:string='flex';
+  assestDataList: AssetData[] = [];
+  filterDataList: AssetData[] = [];
+  viewMode: 'table' | 'card' = 'table';
 
   constructor(private router: Router,
     private assestService:AssestService,
@@ -31,13 +32,16 @@ fetchAssestData(): void {
     console.log("assestData",data);
     this.assestDataList = data;
     this.assestDataList.forEach((asset) => {
-      console.log('brand',asset.assest.brand); // Accessing a property of each element
+      console.log('asset', asset); // Log the entire asset object
+      console.log('assest', asset?.asset); // Log the assest property
+      console.log('brand', asset?.asset?.assetName); // Safe access to assetName
     });
     this.filterDataList = [...this.assestDataList];
+    console.log("filterDataList",this.filterDataList);
   });
   }
 
-  navigateToDetails(asset: number): void {
+  navigateToDetails(asset: number| null | undefined): void {
     this.router.navigate(['/assestdetail',asset]);
   }
 
@@ -46,12 +50,19 @@ fetchAssestData(): void {
       this.filterDataList = [...this.assestDataList];
     } else {
       this.filterDataList = this.assestDataList.filter(assest =>
-        assest.assest.assetName?.toLowerCase().includes(this.searchTxt.trim().toLowerCase()) ||
-        assest.assest.managedBy?.toLowerCase().includes(this.searchTxt.trim().toLowerCase()) ||
-        assest.assest.brand?.toLowerCase().includes(this.searchTxt.trim().toLowerCase()) 
+        assest.asset.assetName?.toLowerCase().includes(this.searchTxt.trim().toLowerCase()) ||
+        assest.asset.managedBy?.toLowerCase().includes(this.searchTxt.trim().toLowerCase()) ||
+        assest.asset.brand?.toLowerCase().includes(this.searchTxt.trim().toLowerCase()) 
 
       );
     }
   }
 
+  toggleView() {
+    this.viewMode = this.viewMode === 'table' ? 'card' : 'table';
+  }
+
+  assetListPage(employeeAsset:any){
+   
+  }
 }

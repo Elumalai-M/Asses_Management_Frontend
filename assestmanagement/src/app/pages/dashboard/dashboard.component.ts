@@ -8,7 +8,8 @@ import { DashboardService } from '../../services/dashboard.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
- 
+    
+
 backendData = new Map<string, { subtitle: string, value: number }[]>();
 cards: { title: string, content: string }[] = [];
 
@@ -55,5 +56,4 @@ constructor(private dashboardService: DashboardService) {}
     });
 
     }
-
 }

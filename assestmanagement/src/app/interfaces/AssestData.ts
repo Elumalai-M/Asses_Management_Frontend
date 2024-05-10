@@ -1,13 +1,14 @@
   // Interface for the overall form data structure
-export  interface AssetData {
-    assest: Assest;
-    fixedassest: FixedAssest;
+  export  interface AssetData {
+    asset: Asset;
+    fixedasset: FixedAsset;
+    itAsset:ITAssetData;
 }
   
 
 // Interface for the 'assest' object
-export interface Assest {
-    assetId: string | null;
+export interface Asset {
+    assetId: number | null;
     assetName: string | null;
     managedBy: string | null;
     modelNumber: string | null;
@@ -21,7 +22,8 @@ export interface Assest {
 }
   
   // Interface for the 'fixedassest' object
-export interface FixedAssest {
+export interface FixedAsset {
+    id: number;
     color: string | null;
     graphicsCard: string | null;
     ram: string | null;
@@ -38,5 +40,27 @@ export interface FixedAssest {
     connectorType: string | null;
     bluetoothVersion: string | null;
     chargingTime: string | null;
+}
+export interface ITAssetData {
+  id: number;
+  hostName: string;
+  totalPort: string;
+  managementPortInfo: string;
+  defaultGateWay: string;
+  firewallType: string;
+  firewallIpAddress: string;
+  macAddress: string;
+  serviceTag: string;
+  os: string;
+  processor: string;
+  raidCard: string;
+  harddisk: string;
+  networkCard: string;
+  smps: string;
+  vmtype: string;
+  diskDetails: string;
+  graphicsCard: string;
+  isPrinterLinked: boolean;
+  active: boolean;
 }
 

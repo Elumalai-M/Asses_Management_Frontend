@@ -3,8 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
-  
   .table {
     width: 100%;
     border-collapse: collapse;
@@ -34,4 +35,8 @@
   }
 .cardView{
   margin-left: 20px;
+}
+.table-responsive{
+  padding-left: 15px;
+  padding-right: 15px;
 }

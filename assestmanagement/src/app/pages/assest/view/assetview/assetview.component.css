@@ -1,3 +1,181 @@
 .tableHeader button {
-    margin-right: 20px; /* Adjust the margin between buttons */
+  margin-right: 30px; 
+  margin-left: 10px;
+}
+.tableHeader {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.table tbody tr:nth-child(even) {
+background-color: #f9f9f9; 
+}
+.table tbody tr:hover {
+background-color: #f0f0f0; 
+}
+.table {
+width: 100%;
+border-collapse: collapse;
+background-color: #fff; 
+}
+input{
+  margin-left: 30px;
+}
+.table th,
+.table td {
+padding: 8px 12px;
+text-align: left;
+}
+
+.table-responsive{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* margin-left: 1000px; */
+
+
+.subMain{
+    height: 100%;
+}
+.plus{
+    height: 25px;
+    width: 25px;
+    padding:1.5px;
+    margin-top: 20px;
+
+    /* margin-left: 1000px; */
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.import{
+    height: 30px;
+    width: 100px;
+    margin-top: 20px;
+    /* border: 2px solid pink; */
+    background-color:  #113c60;
+    color: #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+.loadcontent{
+    height: 90px;
+    width: 1000px;
+    /* border: 2px solid red; */
+}
+
+.maintag{
+    margin-top: -50px;
+    margin-left: 40px;
   }
+ 
+ 
+  .titleDiv{
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-top: 40px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    /* align-items: center; */
+    justify-content: center;
+    align-items: center;
+    .tileInnerdiv{
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.555);
+        border: 0;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        border-radius: 6px;
+        color: #333;
+        background: #fff;
+        width: 400px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        box-sizing: border-box;
+        line-height: 1.5em;
+        .tileSegment1{
+            text-align: right;
+            margin: 0 15px;
+            padding: 0;
+            position: relative;
+            /* z-index: 3 !important; */
+            color: #fff;
+            border-bottom: none;
+            background: transparent;
+            box-sizing: border-box;
+ 
+            .imgIdsegment .imgsegment{
+                width: 200px;
+                height: 160px;
+                border-radius: 3px;
+                background-color: #999;
+                padding: 15px;
+                margin-top: -50px;
+                margin-right: 15px;
+                float: left;
+                box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
+                /* background: linear-gradient(60deg, #ffa726, #fb8c00); */
+                background: #113c60;
+                text-align: right;
+            }
+           
+            .imgIdsegment .idSegment{
+                color: #999;
+                font-size: 14px;
+                margin: 0;
+                padding-top: 10px;
+            }
+            .titleName{
+                margin: 0;
+                color: #3c4858;
+            }
+        }
+       
+       
+ 
+        .tileSegment2{
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+            padding: 0;
+            padding-top: 10px;
+            margin: 0 15px 10px;
+            border-radius: 0;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+        }
+    }
+ 
+}
+ 
+img:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 5px rgba(0, 255, 255, 0.8);
+}
+ 
+.tileInnerdiv:hover{
+    transform: scale(1.1);
+    /* box-shadow: 0 0 100px 5px rgba(255, 51, 0, 0.8); */
+}
+.fixedAssetParent, .iTAssetParent{
+  width: 90%;
+  display: flex;
+  /* flex:1 0 25%; */
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  /* flex-shrink: 10px; */
+  /* display:; */
+  /* flex-wrap: nowrap; */
+  justify-content: space-around;
+  /* overflow: hidden; */
+}

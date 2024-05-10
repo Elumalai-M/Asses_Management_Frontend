@@ -1,87 +1,86 @@
 <div *ngIf="employeeData">
-    <h2>Employee Details</h2>
-  
-    <!-- Display mode -->
-    <div *ngIf="!isEditMode">
-      <table class="custom-table">
-        <tbody>
-          <tr>
-            <td><strong>Employee ID:</strong></td>
-            <td>{{ employeeData.employeeId }}</td>
-          </tr>
-          <tr>
-            <td><strong>First Name:</strong></td>
-            <td>{{ employeeData.firstName }}</td>
-          </tr>
-          <tr>
-            <td><strong>Last Name:</strong></td>
-            <td>{{ employeeData.lastName }}</td>
-          </tr>
-          <tr>
-            <td><strong>Email ID:</strong></td>
-            <td>{{ employeeData.emailId }}</td>
-          </tr>
-          <tr>
-            <td><strong>Contact Number:</strong></td>
-            <td>{{ employeeData.contactNumber }}</td>
-          </tr>
-          <tr>
-            <td><strong>Date of Birth:</strong></td>
-            <td>{{ employeeData.dateOfBirth }}</td>
-          </tr>
-          <tr>
-            <td><strong>Date of Joining:</strong></td>
-            <td>{{ employeeData.dateOfJoining }}</td>
-          </tr>
-          <tr>
-            <td><strong>Designation:</strong></td>
-            <td>{{ employeeData.designation }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <button (click)="enableEditMode()">Edit</button>
-    </div>
-  
-    <!-- Edit mode -->
-    <div *ngIf="isEditMode">
-      <table class="custom-table">
-        <tbody>
-          <tr>
-            <td><strong>Employee ID:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.employeeId"></td>
-          </tr>
-          <tr>
-            <td><strong>First Name:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.firstName"></td>
-          </tr>
-          <tr>
-            <td><strong>Last Name:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.lastName"></td>
-          </tr>
-          <tr>
-            <td><strong>Email ID:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.emailId"></td>
-          </tr>
-          <tr>
-            <td><strong>Contact Number:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.contactNumber"></td>
-          </tr>
-          <tr>
-            <td><strong>Date of Birth:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.dateOfBirth"></td>
-          </tr>
-          <tr>
-            <td><strong>Date of Joining:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.dateOfJoining"></td>
-          </tr>
-          <tr>
-            <td><strong>Designation:</strong></td>
-            <td><input type="text" [(ngModel)]="employeeData.designation"></td>
-          </tr>
-        </tbody>
-      </table>
-      <button (click)="saveChanges()">Save</button>
-      <button (click)="cancelEdit()">Cancel</button>
-    </div>
+  <h2>Employee Details</h2>
+
+  <!-- Display mode -->
+  <div *ngIf="!isEditMode">
+    <table class="custom-table">
+      <tbody>
+        <tr>
+          <td><strong>Employee ID:</strong></td>
+          <td>{{ employeeData.employeeId }}</td>
+        </tr>
+        <tr>
+          <td><strong>First Name:</strong></td>
+          <td>{{ employeeData.firstName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Last Name:</strong></td>
+          <td>{{ employeeData.lastName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Email ID:</strong></td>
+          <td>{{ employeeData.emailId }}</td>
+        </tr>
+        <tr>
+          <td><strong>Contact Number:</strong></td>
+          <td>{{ employeeData.contactNumber }}</td>
+        </tr>
+        <tr>
+          <td><strong>Date of Birth:</strong></td>
+          <td>{{ employeeData.dateOfBirth }}</td>
+        </tr>
+        <tr>
+          <td><strong>Date of Joining:</strong></td>
+          <td>{{ employeeData.dateOfJoining }}</td>
+        </tr>
+        <tr>
+          <td><strong>Designation:</strong></td>
+          <td>{{ employeeData.designation }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="enableEditMode()">Edit</button>
   </div>
-  
+
+  <!-- Edit mode -->
+  <div *ngIf="isEditMode">
+    <table class="custom-table">
+      <tbody>
+        <tr>
+          <td><strong>Employee ID:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.employeeId"></td>
+        </tr>
+        <tr>
+          <td><strong>First Name:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.firstName"></td>
+        </tr>
+        <tr>
+          <td><strong>Last Name:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.lastName"></td>
+        </tr>
+        <tr>
+          <td><strong>Email ID:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.emailId"></td>
+        </tr>
+        <tr>
+          <td><strong>Contact Number:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.contactNumber"></td>
+        </tr>
+        <tr>
+          <td><strong>Date of Birth:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.dateOfBirth"></td>
+        </tr>
+        <tr>
+          <td><strong>Date of Joining:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.dateOfJoining"></td>
+        </tr>
+        <tr>
+          <td><strong>Designation:</strong></td>
+          <td><input type="text" [(ngModel)]="employeeData.designation"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="saveChanges()">Save</button>
+    <button (click)="cancelEdit()">Cancel</button>
+  </div>
+</div>

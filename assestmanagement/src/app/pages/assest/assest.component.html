@@ -1,156 +1,288 @@
-<form [formGroup]="Empregister" (ngSubmit)="HandleSubmit()">
-  <mat-stepper [linear]="isLinear" #stepper>
-      <mat-step [stepControl]="Assestform">
-        <div formGroupName="assest">
-          <ng-template matStepLabel>Assest Basic Details</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Assest Id</mat-label>
-            <input matInput placeholder="AssetId" formControlName="assetId" >
+<form [formGroup]="assetRegister" (ngSubmit)="HandleSubmit()">
+  <mat-stepper  [linear]="isLinear" #stepper>
+    
+      <mat-step [stepControl]="basicform" label="Asset Details">
+        <div class="divflex" formGroupName="basic">
+          <mat-form-field>
+            <mat-label>Asset Code</mat-label>
+            <input matInput placeholder="Asset Code" formControlName="assetCode" required>
           </mat-form-field>
-          <mat-form-field appearance="fill">
-              <mat-label>Asset Name</mat-label>
-              <input matInput placeholder="Asset Name" formControlName="assetName" >
+          <mat-form-field>
+            <mat-label>Asset Name</mat-label>
+            <input matInput placeholder="Asset Name" formControlName="assetName" required>
+          </mat-form-field>
+          <mat-form-field>
+              <mat-label>Remarks</mat-label>
+              <input matInput placeholder="Remarks" formControlName="remark" required>
             </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Managed By</mat-label>
-              <input matInput placeholder="Managed By" formControlName="managedBy" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Model Number</mat-label>
-              <input matInput placeholder="ModelNumber" formControlName="modelNumber" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field>
               <mat-label>Serial Number</mat-label>
-              <input matInput placeholder="SerialNumber" formControlName="serialNumber" >
+              <input matInput placeholder="Serial Number" formControlName="serialNumber" required>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field>
+              <mat-label>Model Number</mat-label>
+              <input matInput placeholder="Model Number" formControlName="modelNumber" required>
+            </mat-form-field>
+            <mat-form-field>
               <mat-label>Brand</mat-label>
-              <input matInput placeholder="Brand" formControlName="brand" >
+              <input matInput placeholder="Brand" formControlName="brand" required>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field>
               <mat-label>Cost</mat-label>
-              <input matInput placeholder="Cost" formControlName="cost" >
+              <input matInput placeholder="Cost" formControlName="cost" required>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>PONumber</mat-label>
+              <input matInput placeholder="PONumber" formControlName="poNumber" required>
             </mat-form-field>
           <div>
             <button mat-raised-button color="primary" matStepperNext>Next</button>
           </div>
       </div>
       </mat-step>
-      <mat-step [stepControl]="Assestform">
-        <div formGroupName="assest">
-          <ng-template matStepLabel>Assest Status Details</ng-template>
-          
-           <mat-form-field appearance="fill">
+      <mat-step [stepControl]="statusform" label="Status Details">
+          <div class="divflex" formGroupName="statusdetails">
+          <mat-form-field>
             <mat-label>Status</mat-label>
-            <mat-select formControlName="status" placeholder="Status">
-              <mat-option *ngFor="let option of status" [value]="option">{{ option }}</mat-option>
-            </mat-select>  
+            <mat-select  formControlName="status" required>
+              @for(status of selectedStatus;track status){
+                <mat-option [value]="status.value">{{status.viewValue}}</mat-option>
+              }
+         
+            </mat-select>
           </mat-form-field>
-          <mat-form-field appearance="fill">
+          <mat-form-field>
               <mat-label>Operational Status</mat-label>
-              <mat-select formControlName="operationalStatus" placeholder="Operational Status">
-                <mat-option *ngFor="let option of operationalStatus" [value]="option">{{ option }}</mat-option>
-              </mat-select>  
+              <mat-select  formControlName="operationalStatus" required>
+                @for(operation of selectedOperation;track operation){
+                  <mat-option [value]="operation.value">{{operation.viewValue}}</mat-option>
+                }
+              </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field>
               <mat-label>Asset Type</mat-label>
-              <mat-select formControlName="assetType" placeholder="Category">
-                <mat-option *ngFor="let option of assestType" [value]="option">{{ option }}</mat-option>
-              </mat-select>            
+              <mat-select formControlName="assetType" required>
+                @for(asset of selectedAsset;track asset){
+                  <mat-option [value]="asset.value">{{asset.viewValue}}</mat-option>
+                }
+              </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field>
               <mat-label>Category</mat-label>
-              <mat-select formControlName="category" placeholder="Category">
-                <mat-option *ngFor="let option of categoryOptions" [value]="option">{{ option }}</mat-option>
+              <mat-select formControlName="category" required>
+                @for(category of selectedCategory;track category){
+                  <mat-option [value]="category.value">{{category.viewValue}}</mat-option>
+                }
               </mat-select>
             </mat-form-field>
-          <mat-form-field appearance="fill">
-              <mat-label>Device</mat-label>
-              <mat-select placeholder="Device">
-                <mat-option *ngFor="let option of device" [value]="option">{{ option }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div>
-              <button mat-raised-button color="primary" matStepperPrevious>Back</button> | 
-              <button mat-raised-button color="primary" matStepperNext>Next</button>
-            </div>
-      </div>
-      </mat-step>
-      <mat-step [stepControl]="FixedAssestform"  label="Fill out contact info">
-        <div formGroupName="fixedassest">
-          <ng-template matStepLabel>Fixed Assest Details</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Color</mat-label>
-            <input matInput placeholder="color" formControlName="color" >
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-              <mat-label>Graphics Card</mat-label>
-              <input matInput placeholder="graphicsCard" formControlName="graphicsCard" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>RAM</mat-label>
-              <input matInput placeholder="ram" formControlName="ram" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Rom</mat-label>
-              <input matInput placeholder="rom" formControlName="rom" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Material</mat-label>
-              <input matInput placeholder="material" formControlName="material" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>os</mat-label>
-                <input matInput placeholder="os" formControlName="os" >
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>OSVersion</mat-label>
-                <input matInput placeholder="osVersion" formControlName="osVersion" >
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Battery</mat-label>
-                <input matInput placeholder="battery" formControlName="battery" >
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>ChargerType</mat-label>
-                <input matInput placeholder="chargerType" formControlName="chargerType" >
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                  <mat-label>Wireless</mat-label>
-                  <input matInput placeholder="wireless" formControlName="wireless" >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Weight</mat-label>
-                  <input matInput placeholder="weight" formControlName="weight" >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Dimension</mat-label>
-                  <input matInput placeholder="dimension" formControlName="dimension" >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>ipAddress</mat-label>
-                  <input matInput placeholder="ipAddress" formControlName="ipAddress" >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>ConnectorType</mat-label>
-                    <input matInput placeholder="connectorType" formControlName="connectorType" >
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>BluetoothVersion</mat-label>
-                    <input matInput placeholder="bluetoothVersion" formControlName="bluetoothVersion" >
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>ChargingTime</mat-label>
-                    <input matInput placeholder="chargingTime" formControlName="chargingTime" >
-                  </mat-form-field>
+            
           <div>
-            <div>
-              <button mat-raised-button color="primary" matStepperPrevious>Back</button> | 
-              <button mat-raised-button (click)="HandleSubmits()" color="accent" >Submit</button>
-            </div>
+            <button mat-raised-button color="primary"matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
           </div>
       </div>
       </mat-step>
+      <div *ngIf="category==='FIXED'; else itAsset">
+      <mat-step [stepControl]="generalform" label="General Specifications">
+          <div class="divflex" formGroupName="generalspecifications">
+          <mat-form-field>
+            <mat-label>Color</mat-label>
+            <input matInput formControlName="color" placeholder="Color" >
+          </mat-form-field>
+          <mat-form-field>
+              <mat-label>Charger Type</mat-label>
+              <input matInput formControlName="chargerType" placeholder="Charger Type" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Wireless</mat-label>
+              <input matInput formControlName="wireless" placeholder="Wireless" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Weight</mat-label>
+              <input matInput formControlName="weight" placeholder="Weight" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Battery</mat-label>
+              <input matInput formControlName="battery" placeholder="Battery" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Connector Type</mat-label>
+              <input matInput formControlName="connectorType" placeholder="Connector Type" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Charging Time</mat-label>
+              <input matInput formControlName="chargingTime" placeholder="Charging Time" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Capacity</mat-label>
+              <input matInput formControlName="capacity" placeholder="Capacity" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Size</mat-label>
+              <input matInput formControlName="size" placeholder="Size" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Watts</mat-label>
+              <input matInput formControlName="watts" placeholder="Watts" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Material</mat-label>
+              <input matInput formControlName="material" placeholder="Material" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Length</mat-label>
+              <input matInput formControlName="length" placeholder="Length" >
+            </mat-form-field>
+            
+          <div>
+            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+      </div>
+      </mat-step>
+      <mat-step [stepControl]="osform"  label="OS Specification">
+          <div class="divflex" formGroupName="osspecifications">
+          <mat-form-field>
+            <mat-label>OS</mat-label>
+            <input matInput formControlName="os" placeholder="OS">
+          </mat-form-field>
+          <mat-form-field>
+              <mat-label>OS Version</mat-label>
+              <input matInput formControlName="osversion" placeholder="OS Version">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Processor</mat-label>
+              <input matInput formControlName="processor" placeholder="Processor">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>RAM</mat-label>
+              <input matInput formControlName="ram" placeholder="RAM">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>ROM</mat-label>
+              <input matInput formControlName="rom" placeholder="ROM">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>IP Address</mat-label>
+              <input matInput formControlName="ipaddress" placeholder="IP Address">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Blutooth Version</mat-label>
+              <input matInput formControlName="blutoothVersion" placeholder="Blutooth Version">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Sim Number</mat-label>
+              <input matInput formControlName="simNumber" placeholder="Sim Number">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>IMEI Number</mat-label>
+              <input matInput formControlName="imeiNumber" placeholder="IMEI Number">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Generation</mat-label>
+              <input matInput formControlName="generation" placeholder="Generation">
+            </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button color="accent" type="submit">Submit</button>
+          </div>
+      </div>
+      </mat-step>
+      </div>
+      <ng-template #itAsset>
   
+        <mat-step [stepControl]="generalform" label="General Specifications">
+          <div class="divflex" formGroupName="generalspecifications2">
+          <mat-form-field>
+            <mat-label>hostName</mat-label>
+            <input matInput formControlName="hostName" placeholder="hostName" >
+          </mat-form-field>
+          <mat-form-field>
+              <mat-label>totalPort</mat-label>
+              <input matInput formControlName="totalPort" placeholder="totalPort" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>managementPortInfo</mat-label>
+              <input matInput formControlName="managementPortInfo" placeholder="managementPortInfo" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>defaultGateWay</mat-label>
+              <input matInput formControlName="defaultGateWay" placeholder="defaultGateWay" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>firewallType</mat-label>
+              <input matInput formControlName="firewallType" placeholder="firewallType" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>firewallIpAddress</mat-label>
+              <input matInput formControlName="firewallIpAddress" placeholder="firewallIpAddress" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>macAddress</mat-label>
+              <input matInput formControlName="macAddress" placeholder="macAddress" >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>serviceTag</mat-label>
+              <input matInput formControlName="serviceTag" placeholder="serviceTag" >
+            </mat-form-field>
+            
+            
+          <div>
+            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+      </div>
+      </mat-step>
+      <mat-step [stepControl]="osform"  label="OS Specification">
+        <div class="divflex" formGroupName="osspecifications2">
+        <mat-form-field>
+          <mat-label>OS</mat-label>
+          <input matInput formControlName="os" placeholder="OS">
+        </mat-form-field>
+        
+          <mat-form-field>
+            <mat-label>Processor</mat-label>
+            <input matInput formControlName="processor" placeholder="Processor">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>raidCard</mat-label>
+            <input matInput formControlName="raidCard" placeholder="raidCard">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>harddisk</mat-label>
+            <input matInput formControlName="harddisk" placeholder="harddisk">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>networkCard</mat-label>
+            <input matInput formControlName="networkCard" placeholder="networkCard">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>smps</mat-label>
+            <input matInput formControlName="smps" placeholder="smps">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>vmtype</mat-label>
+            <input matInput formControlName="vmtype" placeholder="vmtype">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>diskDetails</mat-label>
+            <input matInput formControlName="diskDetails" placeholder="diskDetails">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>graphicsCard</mat-label>
+            <input matInput formControlName="graphicsCard" placeholder="graphicsCard">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>isPrinterLinked</mat-label>
+            <input matInput formControlName="isPrinterLinked" placeholder="isPrinterLinked">
+          </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="accent" type="submit">Submit</button>
+        </div>
+    </div>
+    </mat-step>
+      </ng-template>
+    
     </mat-stepper>
   </form>

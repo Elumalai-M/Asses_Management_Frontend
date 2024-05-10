@@ -1,3 +1,23 @@
+<!-- <div class="fluid-container">
+  <div class="title">
+    <h2>DashBoard</h2>
+  </div>
+  <mat-grid-list cols="3" rowHeight="210px">
+    <mat-grid-tile *ngFor="let entry of backendData.entries();let i = index">
+      <div class="card" [style.background]="cardBackgroundColors[i]">
+        <img src="assets/circle.svg" class="card-img-absolute" alt="circle-image">
+        <div class="card-body">
+          <h2 class="card-title">{{ entry[0] }}</h2>
+          <p class="card-text">
+            <span *ngFor="let item of entry[1]" class="card-value">
+              {{ item.subtitle }}:&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size: 25px;">{{ item.value }}</span><br><br>
+            </span>
+          </p>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div> -->
 <div class="container-fluid">
     <div class="row">
       <div class="col-12">
