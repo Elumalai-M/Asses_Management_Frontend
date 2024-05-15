@@ -3,6 +3,8 @@ import { VendorService } from '../../services/vendor.service';
 import { vendor } from '../../interfaces/vendor';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms'; 
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-vendorlist',
@@ -12,8 +14,11 @@ import { Router } from '@angular/router';
 export class VendorlistComponent implements OnInit {
 
   displayDialog: boolean = false;
-  selectedVendor: any;
+  selectedVendor: vendor | null = null;
 
+  vendorForm!: FormGroup;
+
+  private subscription: Subscription = new Subscription(); 
 
   searchTxt: string = '';
   productDialog: boolean = false;
@@ -50,7 +55,6 @@ export class VendorlistComponent implements OnInit {
       //   //  { label: 'OUTOFSTOCK', value: 'outofstok' }
       // ];
   }
-
   openNew() {
     this.router.navigate(['vendorcreate']);
   }
@@ -59,9 +63,7 @@ export class VendorlistComponent implements OnInit {
     return this.vendorService.getVendorListData();
 }
 
-
-
-  filterAssestData(){
+filterAssestData(){
     if (!this.searchTxt.trim()) {
       this.filterDataList = [...this.vedorDataList];
     } else {
@@ -75,16 +77,39 @@ export class VendorlistComponent implements OnInit {
   }
 
   openEditDialog(vendorData: any) {
-    this.selectedVendor = vendorData; // Set selected vendor data
+    this.selectedVendor = { ...vendorData }; // Set selected vendor data (create a copy)
     this.displayDialog = true; // Show the dialog
-    this.blurTable = true;
+    this.blurTable = true; // Blur the table
+
+   
 }
 
 saveEditedVendor() {
   // Call your API to save edited vendor details
   // Close the dialog after saving
-  this.displayDialog = false;
-  this.blurTable = false;
+  if (this.selectedVendor) {
+    this.vendorService.saveVendorData(this.selectedVendor).subscribe(
+      response => {
+        console.log('Successfully saved:', response);
+        // Optionally, you can perform additional actions here after saving
+        // For example, you can refresh the vendor list or display a success message
+        this.displayDialog = false;
+        this.blurTable = false;
+       this.ngOnInit();
+      },
+      error => {
+        console.error('Error occurred while saving:', error);
+        // Optionally, handle the error here
+        // For example, you can display an error message to the user
+      }
+    );
+  }
+}
+
+onCancelEdit() {
+  this.selectedVendor = null; // Clear selected vendor data
+  this.displayDialog = false; // Close the dialog
+  this.blurTable = false; // Unblur the table
 }
 
 onDialogHide() {

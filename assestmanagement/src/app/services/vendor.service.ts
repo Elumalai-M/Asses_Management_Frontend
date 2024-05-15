@@ -13,6 +13,8 @@ export class VendorService {
 
   private saveVendorUrl ="http://localhost:8080/assetManagment/api/v1/vendor/createVendor";
 
+  private updateVendorUrl="http://localhost:8080/assetManagment/api/v1/vendor/updateVendor";
+
   constructor(private httpClient: HttpClient) {}
 
   getVendorListData(): Observable<any> {
@@ -32,5 +34,6 @@ export class VendorService {
         )
       );
   }
+
   
 }

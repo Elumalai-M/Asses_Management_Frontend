@@ -128,3 +128,47 @@ button.p-button-text:hover {
 :host ::ng-deep .table-dialog-blur {
     filter: blur(3px);
 }
+
+.p-dialog.header{
+    font-weight: bold;
+    color: #007bff; /* Customize the color as needed */
+    background-color: #f0f0f0; /* Customize the background color as needed */
+    padding: 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Adjust border radius as needed */
+}
+
+
+.card {
+    margin: 20px;
+    padding: 20px;
+    /* border: 1px solid #060af3; */
+    border-radius: 5px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    position: relative; 
+}
+
+.row {
+    margin-bottom: 10px; /* Add margin between rows */
+}   
+
+.field input[type="text"],
+.field textarea,
+.field p-inputNumber {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+:host ::ng-deep .p-dialog-title{
+    font-weight: bolder;
+    color: #3484fd;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+:host ::bg-deep .p-dialog-header{
+
+    background-color: #8fbdee;
+
+}
