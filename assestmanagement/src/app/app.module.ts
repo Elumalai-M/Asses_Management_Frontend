@@ -46,6 +46,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { VendorCreateComponent } from './pages/vendor/vendor-create/vendor-create.component';
 import { EditVendorDialogComponentComponent } from './pages/vendor/edit-vendor-dialog-component/edit-vendor-dialog-component.component';
+import { CardModule, } from 'primeng/card';
 
 
 
@@ -96,7 +97,8 @@ import { EditVendorDialogComponentComponent } from './pages/vendor/edit-vendor-d
     RatingModule,
     DialogModule,
     DropdownModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CardModule
  
      ],
   providers: [

@@ -2,73 +2,123 @@
     <p-toast></p-toast>
     <p-toolbar styleClass="mb-4 gap-2">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
-            <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" ></button>
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
+                (click)="openNew()"></button>
+            <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger"></button>
         </ng-template>
 
         <ng-template pTemplate="right" class="rightContent">
-            <input type="text"  [(ngModel)]="searchTxt" (input)="filterAssestData()" placeholder="Search" />
-            
+            <input type="text" [(ngModel)]="searchTxt" (input)="filterAssestData()" placeholder="Search" />
+
             <!-- <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload> -->
- <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
-           
+            <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
+
         </ng-template>
     </p-toolbar>
-    
-    <p-dialog header="Edit Vendor Details" [(visible)]="displayDialog" [modal]="true" [style]="{ 'width': '30rem' }" [baseZIndex]="10000"  (onHide)="onDialogHide()">
-		   
 
+
+    <p-dialog class="bold-header" header="Edit Vendor Details" [(visible)]="displayDialog" [modal]="true" [style]="{ 'width': '60rem' }"
+        [baseZIndex]="10000" (onHide)="onDialogHide()">
+        <div class="card">
+        <div class="container">
+            <div *ngIf="selectedVendor">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="vendorId">Vendor ID</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input pInputText id="editVendorId" class="flex-auto" [(ngModel)]="selectedVendor.vendorId" autocomplete="off" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="vendorName">Vendor Name</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input pInputText id="editVendorName" class="flex-auto" [(ngModel)]="selectedVendor.vendorName" autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input pInputText id="editEmail" class="flex-auto" [(ngModel)]="selectedVendor.email" autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="poc">Point of Contact</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input pInputText id="editPoc" class="flex-auto" [(ngModel)]="selectedVendor.poc" autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="contactNumber">Contact Number</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input pInputText id="editContactNumber" class="flex-auto" [(ngModel)]="selectedVendor.contactNumber" autocomplete="off"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="table-footer button-area">
+                        <div class="col-md-6">
+                            <button  severity="secondary" class="btn btn-success btn-lg back back-button" (click)="displayDialog = false; onCancelEdit()">Cancel</button>
+                        </div>
+                        <div class="col-md-6 ">
+                            <button class="btn btn-success btn-lg  submit-button" (click)="saveEditedVendor()" [disabled]="!selectedVendor">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </p-dialog>
+    
 
 
-       
-
-    <p-table 
-    #dt
-    [value]="filterDataList"
-    [rows]="5"
-    [paginator]="true"
-    [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
-    [tableStyle]="{ 'min-width': '75rem' }"
-    [(selection)]="selectedVendors"
-    [rowHover]="true"
-    dataKey="id"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [showCurrentPageReport]="true"
-    class="table table-hover"
-     [class.table-dialog-blur]="blurTable"
->
-    <ng-template pTemplate="header">
-        <tr>
-            <th style="width: 4rem">
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th pSortableColumn="vendorId" style="min-width:15rem">Vendor ID <p-sortIcon field="vendorId"></p-sortIcon></th>
-            <th pSortableColumn="vendorName">Vendor Name <p-sortIcon></p-sortIcon></th>
-            <th>Email ID</th>
-            <th>Point of Contact </th>
-            <th>Contact number </th>
-            <th>Action</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-vendorData let-i="index">
-        <tr>
-            <td>
-                <p-tableCheckbox [value]="vendorData"></p-tableCheckbox>
-            </td>
-            <td>{{ vendorData.vendorId }}</td>
-            <td>{{ vendorData.vendorName }}</td>
-            <td>{{ vendorData.email }}</td>
-            <td>{{ vendorData.poc }}</td>
-            <td>{{ vendorData.contactNumber }}</td>
-             <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="openEditDialog(vendorData)">Edit</button>
-            </td> 
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-        <div class="flex align-items-center justify-content-between">In total there are {{ filterDataList ? filterDataList.length : 0 }} vendors.</div>
-    </ng-template>
-</p-table>
 
 
+    <p-table #dt [value]="filterDataList" [rows]="5" [paginator]="true"
+        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+        [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="selectedVendors" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+        class="table table-hover" [class.table-dialog-blur]="blurTable">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 4rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="vendorId" style="min-width:15rem">Vendor ID <p-sortIcon
+                        field="vendorId"></p-sortIcon></th>
+                <th pSortableColumn="vendorName">Vendor Name <p-sortIcon></p-sortIcon></th>
+                <th>Email ID</th>
+                <th>Point of Contact </th>
+                <th>Contact number </th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-vendorData let-i="index">
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="vendorData"></p-tableCheckbox>
+                </td>
+                <td>{{ vendorData.vendorId }}</td>
+                <td>{{ vendorData.vendorName }}</td>
+                <td>{{ vendorData.email }}</td>
+                <td>{{ vendorData.poc }}</td>
+                <td>{{ vendorData.contactNumber }}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="openEditDialog(vendorData)">Edit</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">In total there are {{ filterDataList ?
+                filterDataList.length : 0 }} vendors.</div>
+        </ng-template>
+    </p-table>
