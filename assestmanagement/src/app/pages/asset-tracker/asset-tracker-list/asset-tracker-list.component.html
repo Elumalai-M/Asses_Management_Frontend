@@ -1,0 +1,166 @@
+<div class="card">
+    <!-- <p-toast></p-toast> -->
+    <p-toolbar styleClass="mb-4 gap-2">
+        <!-- <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
+                ></button>
+            <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger"></button>
+        </ng-template> -->
+        <ng-template pTemplate="right" class="rightContent">
+            <input type="text" [(ngModel)]="searchTxt" (input)="filterAssetTrackerData()" placeholder="Search" />
+
+
+        </ng-template>
+    </p-toolbar>
+
+
+    <p-dialog class="bold-header" header="Update Details" [(visible)]="displayDialog" [modal]="true"
+        [style]="{ 'width': '60rem' }" [baseZIndex]="10000" (onHide)="onDialogHide()">
+        <div class="card">
+            <div class="container">
+                <div *ngIf="selectedAssetTrackerData">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="assetAssignId">Asset AssignId</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input pInputText id="editAssetAssignId" class="flex-auto"
+                                [(ngModel)]="selectedAssetTrackerData.assetAssignId" autocomplete="off" readonly />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="assetId">Asset ID</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input pInputText id="editAssetId" class="flex-auto"
+                                [(ngModel)]="selectedAssetTrackerData.assetId" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="assetName">Asset Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input pInputText id="editAssetName" class="flex-auto"
+                                [(ngModel)]="selectedAssetTrackerData.assetName" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="assignDate">Assign Date</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input pInputText id="editAssignDate" class="flex-auto"
+                                [(ngModel)]="selectedAssetTrackerData.assignDate" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="returnDate">Return Date</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p-calendar id="editReturnDate" class="custom-calendar flex-auto" [(ngModel)]="selectedAssetTrackerData.returnDate"
+                            [showIcon]="true"  dateFormat="mm/dd/yy" ></p-calendar>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="employeeId">Employee Id</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input pInputText id="editEmployeeId" class="flex-auto"
+                                [(ngModel)]="selectedAssetTrackerData.employeeId" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="employeeName">Employee Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input pInputText id="editEmployeeName" class="flex-auto"
+                                [(ngModel)]="selectedAssetTrackerData.employeeName" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="remark">Remark</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input pInputText id="editRemark" class="flex-auto remark-input"
+                                [(ngModel)]="selectedAssetTrackerData.remark" autocomplete="off" />
+                        </div>
+                    </div>
+            
+                </div>
+                <br>
+                <div class="row">
+                    <div class="table-footer button-area">
+                        <div class="col-md-6">
+                            <button severity="secondary" class="btn btn-success btn-lg back back-button"
+                                (click)="displayDialog = false; onCancelEdit()">Cancel</button>
+                        </div>
+                        <!-- <div class="col-md-6 ">
+                            <button class="btn btn-success btn-lg  submit-button" (click)="saveEditedVendor()" [disabled]="!selectedVendor">Save</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+
+
+
+
+
+    <p-table #dt [value]="assetTrackerFilterDatalist" [rows]="5" [paginator]="true"
+        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+        [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="selectedAssetTrackerData" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+        class="table table-hover" [class.table-dialog-blur]="blurTable">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 4rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="vendorId" style="min-width:15rem">AssetAssign Id <p-sortIcon
+                        field="vendorId"></p-sortIcon></th>
+                <th>Asset Id</th>
+                <th pSortableColumn="vendorName">Asset Name <p-sortIcon></p-sortIcon></th>
+
+                <th>EmployeeId</th>
+                <th>EmployeeName</th>
+                <th>Assign Date </th>
+                <th>Return Date</th>
+                <th>Remark</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-assetTrackerData let-i="index">
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="assetTrackerData"></p-tableCheckbox>
+                </td>
+                <td>{{ assetTrackerData.assetAssignId }}</td>
+                <td>{{ assetTrackerData.assetId }}</td>
+                <td>{{ assetTrackerData.assetName }}</td>
+                <td>{{ assetTrackerData.employeeId }}</td>
+                <td>{{ assetTrackerData.employeeName }}</td>
+                <td>{{ assetTrackerData.assignDate }}</td>
+                <td>{{ assetTrackerData.returnDate }}</td>
+                <td>{{ assetTrackerData.remark }}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="openEditDialog(assetTrackerData)">Edit</button>
+                </td>
+                <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                >Edit</button>
+        </td> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">In total there are {{
+                assetTrackerFilterDatalist ?
+                assetTrackerFilterDatalist.length : 0 }} records.</div>
+        </ng-template>
+    </p-table>

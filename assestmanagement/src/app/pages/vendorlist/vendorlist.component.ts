@@ -63,7 +63,7 @@ export class VendorlistComponent implements OnInit {
     return this.vendorService.getVendorListData();
 }
 
-filterAssestData(){
+filterVendorData(){
     if (!this.searchTxt.trim()) {
       this.filterDataList = [...this.vedorDataList];
     } else {
