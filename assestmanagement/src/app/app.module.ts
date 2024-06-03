@@ -47,6 +47,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { VendorCreateComponent } from './pages/vendor/vendor-create/vendor-create.component';
 import { EditVendorDialogComponentComponent } from './pages/vendor/edit-vendor-dialog-component/edit-vendor-dialog-component.component';
 import { CardModule, } from 'primeng/card';
+import { AssetTrackerListComponent } from './pages/asset-tracker/asset-tracker-list/asset-tracker-list.component';
+import { CalendarModule } from 'primeng/calendar';
+
 
 
 
@@ -65,7 +68,8 @@ import { CardModule, } from 'primeng/card';
     EmployeeCeateComponent,
     VendorlistComponent,
     VendorCreateComponent,
-    EditVendorDialogComponentComponent
+    EditVendorDialogComponentComponent,
+    AssetTrackerListComponent
  
   ],
   imports: [
@@ -98,8 +102,8 @@ import { CardModule, } from 'primeng/card';
     DialogModule,
     DropdownModule,
     ConfirmDialogModule,
-    CardModule
- 
+    CardModule,
+    CalendarModule
      ],
   providers: [
     provideClientHydration(),

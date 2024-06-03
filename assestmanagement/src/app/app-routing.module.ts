@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -12,6 +12,8 @@ import { EmployeeCeateComponent } from './pages/emp/employee-ceate/employee-ceat
 import { VendorlistComponent } from './pages/vendorlist/vendorlist.component';
 import { create } from 'domain';
 import { VendorCreateComponent } from './pages/vendor/vendor-create/vendor-create.component';
+import { AssetTrackerListComponent } from './pages/asset-tracker/asset-tracker-list/asset-tracker-list.component';
+
 
 const routes: Routes = [
   {component:LoginComponent,path: "login"},
@@ -25,6 +27,7 @@ const routes: Routes = [
   {component:EmployeeCeateComponent,path: "employeeCreate"},
   {component:VendorlistComponent,path: "vendorlist"},
   {component:VendorCreateComponent, path :"vendorcreate"},
+  {component:AssetTrackerListComponent, path : "assetTrackerList"},
   { path: 'employeeDetail/:employee', component: EmployeeDetailComponent },
   { path: 'assestdetail/:asset', component: AssestdetailComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' } // Default route
