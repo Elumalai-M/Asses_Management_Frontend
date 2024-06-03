@@ -121,44 +121,64 @@
       </ng-container>
       <ng-template #itAsset>
         <tr>
-          <td><strong>Active:</strong></td>
-          <td>{{ assestDataList.itAsset.active }}</td>
+          <td><strong>Color:</strong></td>
+          <td>{{ assestDataList.itasset.color }}</td>
         </tr>
         <tr>
-          <td><strong>DefaultGateway:</strong></td>
-          <td>{{ assestDataList.itAsset.defaultGateWay }}</td>
+          <td><strong>Charger Type:</strong></td>
+          <td>{{ assestDataList.itasset.chargerType }}</td>
         </tr>
         <tr>
-          <td><strong>Disk Details:</strong></td>
-          <td>{{ assestDataList.itAsset.diskDetails }}</td>
+          <td><strong>Display Size:</strong></td>
+          <td>{{ assestDataList.itasset.displaySize }}</td>
         </tr>
         <tr>
-          <td><strong>FirewallIpAddress:</strong></td>
-          <td>{{ assestDataList.itAsset.firewallIpAddress }}</td>
+          <td><strong>Battery Health:</strong></td>
+          <td>{{ assestDataList.itasset.batteryHealth }}</td>
         </tr>
         <tr>
-          <td><strong>FireWallType:</strong></td>
-          <td>{{ assestDataList.itAsset.firewallType }}</td>
+          <td><strong>LAN MAC Address:</strong></td>
+          <td>{{ assestDataList.itasset.lanMacAddress }}</td>
         </tr>
         <tr>
-          <td><strong>GraphicsCard:</strong></td>
-          <td>{{ assestDataList.itAsset.graphicsCard }}</td>
+          <td><strong>WiFi MAC Address:</strong></td>
+          <td>{{ assestDataList.itasset.wifiMacAddress }}</td>
         </tr>
         <tr>
-          <td><strong>HardDisk:</strong></td>
-          <td>{{ assestDataList.itAsset.harddisk }}</td>
+          <td><strong>DC Number:</strong></td>
+          <td>{{ assestDataList.itasset.dcNumber }}</td>
         </tr>
         <tr>
-          <td><strong>HostName:</strong></td>
-          <td>{{ assestDataList.itAsset.hostName }}</td>
+          <td><strong>OS:</strong></td>
+          <td>{{ assestDataList.itasset.os }}</td>
         </tr>
         <tr>
-          <td><strong>MacAddress:</strong></td>
-          <td>{{ assestDataList.itAsset.macAddress }}</td>
+          <td><strong>OS Version:</strong></td>
+          <td>{{ assestDataList.itasset.osVersion }}</td>
         </tr>
         <tr>
-          <td><strong>Port:</strong></td>
-          <td>{{ assestDataList.itAsset.totalPort }}</td>
+          <td><strong>Processor:</strong></td>
+          <td>{{ assestDataList.itasset.processor }}</td>
+        </tr>
+        <tr>
+          <td><strong>Generation:</strong></td>
+          <td>{{ assestDataList.itasset.generation }}</td>
+        </tr>
+        <tr>
+          <td><strong>Clock Speed:</strong></td>
+          <td>{{ assestDataList.itasset.clockSpeed }}</td>
+        </tr>
+        <tr>
+          <td><strong>RAM:</strong></td>
+          <td>{{ assestDataList.itasset.ram }}</td>
+        </tr>
+        <tr>
+          <td><strong>Storage Type:</strong></td>
+          <td>{{ assestDataList.itasset.storageType }}</td>
+        </tr>
+        <tr>
+          <td><strong>Storage Capacity:</strong></td>
+          <td>{{ assestDataList.itasset.storageCapacity }}</td>
         </tr>
         </ng-template>
       <!-- Add more properties as needed -->
@@ -290,41 +310,65 @@
         </ng-container>
         <ng-template #itAsset>
           <tr>
-            <td><strong>Active:</strong></td>
-            <td><input type="text" [(ngModel)]="assestDataList.itAsset.active"></td>
-          </tr>
-          <tr>
-            <td><strong>DefaultGateway:</strong></td>
-            <td><input type="text" [(ngModel)]="assestDataList.itAsset.defaultGateWay"></td>
-          </tr>
-          <tr>
-            <td><strong>Disk Details:</strong></td>
-            <td><input type="text" [(ngModel)]="assestDataList.itAsset.diskDetails"></td>
-          </tr>
-          <tr>
-            <td><strong>FirewallIpAddress:</strong></td>
-            <td><input type="text" [(ngModel)]="assestDataList.itAsset.firewallIpAddress"></td>
-          </tr>
-          <tr>
-            <td><strong>FireWallType:</strong></td>
-            <td><input type="text" [(ngModel)]="assestDataList.itAsset.firewallType"></td>
-          </tr>
-          <tr>
-            <td><strong>GraphicsCard:</strong></td>
-            <td><input type="text" [(ngModel)]="assestDataList.itAsset.graphicsCard"></td>
-            </tr>
-          <tr>
-              <td><strong>HardDisk:</strong></td>
-              <td><input type="text" [(ngModel)]="assestDataList.itAsset.harddisk"></td>
-              </tr>
-          <tr>
-                <td><strong>HostName:</strong></td>
-                <td><input type="text" [(ngModel)]="assestDataList.itAsset.hostName"></td>
-         </tr>
-         <tr>
-          <td><strong>Port:</strong></td>
-          <td><input type="text" [(ngModel)]="assestDataList.itAsset.totalPort"></td>
-   </tr>
+            <td><strong>Color:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.color"></td>
+        </tr>
+        <tr>
+            <td><strong>Charger Type:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.chargerType"></td>
+        </tr>
+        <tr>
+            <td><strong>Display Size:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.displaySize"></td>
+        </tr>
+        <tr>
+            <td><strong>Battery Health:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.batteryHealth"></td>
+        </tr>
+        <tr>
+            <td><strong>LAN MAC Address:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.lanMacAddress"></td>
+        </tr>
+        <tr>
+            <td><strong>WiFi MAC Address:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.wifiMacAddress"></td>
+        </tr>
+        <tr>
+            <td><strong>DC Number:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.dcNumber"></td>
+        </tr>
+        <tr>
+            <td><strong>OS:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.os"></td>
+        </tr>
+        <tr>
+            <td><strong>OS Version:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.osVersion"></td>
+        </tr>
+        <tr>
+            <td><strong>Processor:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.processor"></td>
+        </tr>
+        <tr>
+            <td><strong>Generation:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.generation"></td>
+        </tr>
+        <tr>
+            <td><strong>Clock Speed:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.clockSpeed"></td>
+        </tr>
+        <tr>
+            <td><strong>RAM:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.ram"></td>
+        </tr>
+        <tr>
+            <td><strong>Storage Type:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.storageType"></td>
+        </tr>
+        <tr>
+            <td><strong>Storage Capacity:</strong></td>
+            <td><input type="text" [(ngModel)]="assestDataList.itasset.storageCapacity"></td>
+        </tr>
         </ng-template>
      </tbody>
      </table>

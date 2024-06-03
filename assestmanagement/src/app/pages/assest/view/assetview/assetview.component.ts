@@ -45,6 +45,10 @@ fetchAssestData(): void {
     this.router.navigate(['/assestdetail',asset]);
   }
 
+  assignAsset(asset: number| null | undefined): void {
+    this.router.navigate(['/assestdetail',asset]);
+  }
+
   filterAssestData(){
     if (!this.searchTxt.trim()) {
       this.filterDataList = [...this.assestDataList];

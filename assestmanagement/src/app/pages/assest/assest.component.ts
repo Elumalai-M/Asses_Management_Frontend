@@ -54,19 +54,19 @@ export class AssestComponent {
     laptopspecifications:this.builder.group({
       "color":this.builder.control(''),
       "chargerType":this.builder.control(''),
-      "displaysize":this.builder.control(''),
-      "batteryhealth":this.builder.control(''),
-      "lanmacaddress":this.builder.control(''),
-      "wifimacaddress":this.builder.control(''),
-      "dcnumber":this.builder.control(''),
+      "displaySize":this.builder.control(''),
+      "batteryHealth":this.builder.control(''),
+      "lanMacAddress":this.builder.control(''),
+      "wifiMacAddress":this.builder.control(''),
+      "dcNumber":this.builder.control(''),
       "os":this.builder.control(''),
-      "osversion":this.builder.control(''),
+      "osVersion":this.builder.control(''),
       "processor":this.builder.control(''),
       "generation":this.builder.control(''),
-      "clockspeed":this.builder.control(''),
+      "clockSpeed":this.builder.control(''),
       "ram":this.builder.control(''),
-      "storagetype":this.builder.control(''),     
-      "storagecapacity":this.builder.control('')    
+      "storageType":this.builder.control(''),     
+      "storageCapacity":this.builder.control('')    
     })
   })
   

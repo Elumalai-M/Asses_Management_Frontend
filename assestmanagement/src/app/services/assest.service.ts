@@ -40,7 +40,7 @@ export class AssestService {
     return this.httpClient.get<AssetData[]>(`${this.getAssestUrl}`,{headers});
   }
 
-  getAssetById(assetId: number): Observable<AssetData> {
+  getAssetById(assetId: String): Observable<AssetData> {
     console.log(assetId);
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('jwtToken')}`);
     const url = `${this.getAssestByIdUrl}/${assetId}`; // Assuming endpoint is /assets/:id

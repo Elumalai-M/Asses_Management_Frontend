@@ -12,7 +12,6 @@
         <tr>
           <th scope="col"></th>
           <th scope="col">Assest Name</th>
-          <th scope="col">Managed By</th>
           <th scope="col">Operational Status</th>
           <th scope="col">Model Number</th>
           <th scope="col">Serial Number</th>
@@ -20,13 +19,13 @@
           <th scope="col">Cost</th>
           <th scope="col">Status</th>
           <th scope="col">AssetType</th>
+          <th scope="col">Assign</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let assests of filterDataList; let i = index" (click)="navigateToDetails(assests?.asset?.assetId)">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ assests?.asset?.assetName }}</td>
-          <td>{{ assests?.asset?.managedBy }}</td>
           <td>{{ assests?.asset?.operationalStatus }}</td>
           <td>{{ assests?.asset?.modelNumber }}</td>
           <td>{{ assests?.asset?.serialNumber }}</td>
@@ -34,6 +33,9 @@
           <td>{{ assests?.asset?.cost }}</td>
           <td>{{ assests?.asset?.status }}</td>
           <td>{{ assests?.asset?.assetType }}</td>
+          <td>
+            <button  (click)="assignAsset(assests?.asset?.assetId)">Assign</button>
+          </td>
         </tr>
       </tbody>
     </table>
