@@ -2,9 +2,32 @@
     <p-toast></p-toast>
     <p-toolbar styleClass="mb-4 gap-2">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
-                (click)="openNew()"></button>
-            <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger"></button>
+           
+            <!-- <button mat-fab 
+                (click)="openNew()" color="primary">
+                <mat-icon>add</mat-icon>
+            </button>
+            <span></span> -->
+            <div class="icon-button-row">
+                <div class="icon-flex-container">
+                <div class="icon-button-container">
+                <button mat-fab   (click)="openNew()" color="primary">
+                <mat-icon>add</mat-icon>
+                </button>
+                </div>
+                <!-- <div class="icon-button-container">
+                    <button mat-fab   (click)="openNew()" color="primary">
+                    <mat-icon>delete</mat-icon>
+                    </button>
+                    </div> -->
+                </div>
+                </div>
+
+            <!-- <button mat-fab >
+                <mat-icon>delete</mat-icon>
+            </button> -->
+
+            
         </ng-template>
 
         <ng-template pTemplate="right" class="rightContent">
@@ -62,6 +85,14 @@
                         <input pInputText id="editContactNumber" class="flex-auto" [(ngModel)]="selectedVendor.contactNumber" autocomplete="off"/>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="gstNumber">GST Number</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input pInputText id="editgstNumber" class="flex-auto" [(ngModel)]="selectedVendor.gstNo" autocomplete="off"/>
+                    </div>
+                </div>
                 <br>
                 <div class="row">
                     <div class="table-footer button-area">
@@ -98,6 +129,7 @@
                 <th>Email ID</th>
                 <th>Point of Contact </th>
                 <th>Contact number </th>
+                <th>GST Number</th>
                 <th>Action</th>
             </tr>
         </ng-template>
@@ -111,10 +143,14 @@
                 <td>{{ vendorData.email }}</td>
                 <td>{{ vendorData.poc }}</td>
                 <td>{{ vendorData.contactNumber }}</td>
-                <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
-                        (click)="openEditDialog(vendorData)">Edit</button>
-                </td>
+                <td>{{ vendorData.gstNo }}</td>
+                <!-- <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="openEditDialog(vendorData)">
+                    </button>
+                </td> -->
+                <td> <button mat-mini-fab  (click)="openEditDialog(vendorData)">
+                    <mat-icon>edit</mat-icon>
+                </button></td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">

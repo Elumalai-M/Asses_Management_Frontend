@@ -183,3 +183,6 @@ button.p-button-text:hover {
 
 /* styles.css or your-component.component.css */
 
+.asset-field{
+    width: 110%;
+}

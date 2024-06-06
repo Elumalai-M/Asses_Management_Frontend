@@ -70,6 +70,28 @@ onDialogHide() {
   this.blurTable = false;
 }
 
+saveEditedVAssetTrackerData() {
+  // Call your API to save edited vendor details
+  // Close the dialog after saving
+  if (this.selectedAssetTrackerData) {
+    this.assetTrackerService.updateAssetTrackerDataData(this.selectedAssetTrackerData).subscribe(
+      response => {
+        console.log('Successfully saved:', response);
+        // Optionally, you can perform additional actions here after saving
+        // For example, you can refresh the vendor list or display a success message
+        this.displayDialog = false;
+        this.blurTable = false;
+       this.ngOnInit();
+      },
+      error => {
+        console.error('Error occurred while saving:', error);
+        // Optionally, handle the error here
+        // For example, you can display an error message to the user
+      }
+    );
+  }
+}
+
 }
 
 

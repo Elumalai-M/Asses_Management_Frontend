@@ -7,4 +7,5 @@ export interface vendor {
     poc?: string;
     contactNumber?: string;
     status?: boolean;
+    gstNo?: string;
 }

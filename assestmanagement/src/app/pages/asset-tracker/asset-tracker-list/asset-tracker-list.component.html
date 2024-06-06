@@ -24,7 +24,7 @@
                             <label for="assetAssignId">Asset AssignId</label>
                         </div>
                         <div class="col-md-6">
-                            <input pInputText id="editAssetAssignId" class="flex-auto"
+                            <input pInputText id="editAssetAssignId" class="flex-auto asset-field"
                                 [(ngModel)]="selectedAssetTrackerData.assetAssignId" autocomplete="off" readonly />
                         </div>
                     </div>
@@ -33,8 +33,8 @@
                             <label for="assetId">Asset ID</label>
                         </div>
                         <div class="col-md-6">
-                            <input pInputText id="editAssetId" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.assetId" autocomplete="off" />
+                            <input pInputText id="editAssetId" class="flex-auto asset-field"
+                                [(ngModel)]="selectedAssetTrackerData.assetId" autocomplete="off" readonly />
                         </div>
                     </div>
                     <div class="row">
@@ -42,8 +42,8 @@
                             <label for="assetName">Asset Name</label>
                         </div>
                         <div class="col-md-6">
-                            <input pInputText id="editAssetName" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.assetName" autocomplete="off" />
+                            <input pInputText id="editAssetName" class="flex-auto asset-field"
+                                [(ngModel)]="selectedAssetTrackerData.assetName" autocomplete="off" readonly />
                         </div>
                     </div>
                     <div class="row">
@@ -51,8 +51,8 @@
                             <label for="assignDate">Assign Date</label>
                         </div>
                         <div class="col-md-6">
-                            <input pInputText id="editAssignDate" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.assignDate" autocomplete="off" />
+                            <input pInputText id="editAssignDate" class="flex-auto asset-field"
+                                [(ngModel)]="selectedAssetTrackerData.assignDate" autocomplete="off" readonly />
                         </div>
                     </div>
                     <div class="row">
@@ -60,8 +60,8 @@
                             <label for="returnDate">Return Date</label>
                         </div>
                         <div class="col-md-6">
-                            <p-calendar id="editReturnDate" class="custom-calendar flex-auto" [(ngModel)]="selectedAssetTrackerData.returnDate"
-                            [showIcon]="true"  dateFormat="mm/dd/yy" ></p-calendar>
+                        <input type="date" id="returnDate" [(ngModel)]="selectedAssetTrackerData.returnDate"
+                            style="font-size: 16px;" class="asset-field">
                         </div>
                     </div>
                     <div class="row">
@@ -69,8 +69,8 @@
                             <label for="employeeId">Employee Id</label>
                         </div>
                         <div class="col-md-6">
-                            <input pInputText id="editEmployeeId" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.employeeId" autocomplete="off" />
+                            <input pInputText id="editEmployeeId" class="flex-auto asset-field"
+                                [(ngModel)]="selectedAssetTrackerData.employeeId" autocomplete="off" readonly />
                         </div>
                     </div>
                     <div class="row">
@@ -78,8 +78,8 @@
                             <label for="employeeName">Employee Name</label>
                         </div>
                         <div class="col-md-6">
-                            <input pInputText id="editEmployeeName" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.employeeName" autocomplete="off" />
+                            <input pInputText id="editEmployeeName" class="flex-auto asset-field"
+                                [(ngModel)]="selectedAssetTrackerData.employeeName" autocomplete="off" readonly />
                         </div>
                     </div>
 
@@ -88,11 +88,11 @@
                             <label for="remark">Remark</label>
                         </div>
                         <div class="col-md-6">
-                            <input pInputText id="editRemark" class="flex-auto remark-input"
+                            <input pInputText id="editRemark" class="flex-auto remark-input asset-field"
                                 [(ngModel)]="selectedAssetTrackerData.remark" autocomplete="off" />
                         </div>
                     </div>
-            
+
                 </div>
                 <br>
                 <div class="row">
@@ -101,9 +101,11 @@
                             <button severity="secondary" class="btn btn-success btn-lg back back-button"
                                 (click)="displayDialog = false; onCancelEdit()">Cancel</button>
                         </div>
-                        <!-- <div class="col-md-6 ">
-                            <button class="btn btn-success btn-lg  submit-button" (click)="saveEditedVendor()" [disabled]="!selectedVendor">Save</button>
-                        </div> -->
+                        <div class="col-md-6 ">
+                            <button class="btn btn-success btn-lg  submit-button"
+                                (click)="saveEditedVAssetTrackerData()"
+                                [disabled]="!selectedAssetTrackerData">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,6 +136,7 @@
                 <th>Assign Date </th>
                 <th>Return Date</th>
                 <th>Remark</th>
+                <th>Action</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-assetTrackerData let-i="index">
@@ -149,10 +152,13 @@
                 <td>{{ assetTrackerData.assignDate }}</td>
                 <td>{{ assetTrackerData.returnDate }}</td>
                 <td>{{ assetTrackerData.remark }}</td>
-                <td>
+                <!-- <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
                         (click)="openEditDialog(assetTrackerData)">Edit</button>
-                </td>
+                </td> -->
+                <td> <button mat-mini-fab  (click)="openEditDialog(assetTrackerData)">
+                    <mat-icon>edit</mat-icon>
+                </button></td>
                 <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
                 >Edit</button>
         </td> -->
