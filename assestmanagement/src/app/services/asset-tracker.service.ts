@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AssetTrackerTableData } from '../interfaces/AssetTrackerTableData';
+import { AssetTracker } from '../interfaces/AssetTracker';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ import { AssetTrackerTableData } from '../interfaces/AssetTrackerTableData';
 
     private getAssetTrackerTableDataUrl = "http://localhost:8080/assetManagment/api/v1/assetTracker/assettrackerlist";
 
+    private createAssetTrackerUrl = "http://localhost:8080/assetManagment/api/v1/assetTracker/assignAsset";
+
     constructor(private httpClient: HttpClient) {}
 
 
@@ -18,5 +21,10 @@ import { AssetTrackerTableData } from '../interfaces/AssetTrackerTableData';
       console.log("test");
       const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('jwtToken')}`);
       return this.httpClient.get<AssetTrackerTableData[]>(`${this.getAssetTrackerTableDataUrl}`,{headers});
+    }
+
+    createAssetTracker(assetTrackerData: AssetTracker): Observable<any> {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('jwtToken')}`);
+      return this.httpClient.post<any>(`${this.createAssetTrackerUrl}`, assetTrackerData,{headers});
     }
   }

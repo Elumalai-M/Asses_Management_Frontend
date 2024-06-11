@@ -1,0 +1,43 @@
+.form-container{
+    height: 380px;
+    width: 480px;
+}
+
+.row{
+    height: 350px;
+    width: 480px;
+}
+.header-container {
+height: 20px;
+}
+  
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px; /* Add margin below the label */
+}
+
+input {
+    width: 100%; /* Ensure input takes full width */
+    padding: 5px; /* Add padding inside the input */
+}
+
+.custom-form-field {
+    width: 450px; /* Adjust width as needed */
+    height: 70px;
+}
+
+.custom-input {
+    height: 10px; /* Adjust height as needed */
+    line-height: 50px; /* Ensure the text is vertically centered */
+    padding: 0 10px; /* Adjust padding as needed */
+}
+.button-group {
+    display: flex;
+    justify-content: flex-end; /* Align items to the start (left) */
+    gap: 10px; /* Add space between the buttons */
+  }
+  
+  .button-group button {
+    margin-right: 10px; /* Optionally add margin to one button */
+  }

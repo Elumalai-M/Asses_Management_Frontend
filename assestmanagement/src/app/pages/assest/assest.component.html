@@ -11,10 +11,10 @@
               }
             </mat-select>
           </mat-form-field>
-          <mat-form-field>
+          <!-- <mat-form-field>
             <mat-label>Asset Code</mat-label>
             <input matInput placeholder="Asset Code" formControlName="assetCode" required>
-          </mat-form-field>
+          </mat-form-field> -->
           <mat-form-field>
             <mat-label>Asset Name</mat-label>
             <input matInput placeholder="Asset Name" formControlName="assetName" required>
@@ -48,7 +48,9 @@
               <input matInput placeholder="Remarks" formControlName="remark" required>
             </mat-form-field>
           <div>
+            <div class="button-container">
             <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
           </div>
       </div>
       </mat-step>
@@ -73,28 +75,40 @@
                 }
               </mat-select>
             </mat-form-field>
-            <div *ngIf="assetType ==='Vendor'">
-              <mat-form-field>
+            <div *ngIf="assetType ==='Lease'">
+              <!-- <mat-form-field>
                 <mat-label>Vendor Name</mat-label>
                 <mat-select  formControlName="vendor">
                   @for(asset of selectedAsset;track asset){
                     <mat-option [value]="asset.value">{{asset.viewValue}}</mat-option>
                   }
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field> -->
+              <mat-form-field appearance="fill" class="custom-form-field">
+                <input type="text" id="vendor" formControlName="vendor" matInput [matAutocomplete]="auto"  class="custom-input"/>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let data of filteredVendors | async" [value]="data">
+                        {{ data }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+              
+
               <mat-form-field>
                 <mat-label>Rent/Month</mat-label>
                 <input matInput placeholder="rent" formControlName="rent">
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Service Tag</mat-label>
-                <input matInput placeholder="servicetag" formControlName="servicetag">
+                <input matInput placeholder="serviceTag" formControlName="serviceTag">
               </mat-form-field>
             </div> 
 
           <div>
+            <div class="button-container">
             <button mat-raised-button color="primary"matStepperPrevious>Back</button>
             <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
           </div>
       </div>
       </mat-step>
@@ -133,11 +147,20 @@
               <input matInput formControlName="ram" placeholder="RAM">
             </mat-form-field>
           
-            <mat-form-field>
+            <!-- <mat-form-field>
               <mat-label>Storage Type</mat-label>
               <input matInput formControlName="storageType" placeholder="Storage Type">
-            </mat-form-field>
+            </mat-form-field> -->
           
+            <mat-form-field>
+              <mat-label>Storage Type</mat-label>
+              <mat-select  formControlName="storageType" required>
+                @for(storageType of selectedStorageType;track storageType){
+                  <mat-option [value]="storageType.value">{{storageType.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
             <mat-form-field>
               <mat-label>Storage Capacity</mat-label>
               <input matInput formControlName="storageCapacity" placeholder="Storage Capacity">
@@ -177,8 +200,10 @@
 
             
           <div>
+            <div class="button-container">
             <button mat-raised-button color="primary" matStepperPrevious>Back</button>
             <button mat-raised-button color="accent" type="submit">Submit</button>
+            </div>
           </div>
       </div>
       </mat-step>
