@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AssestService } from '../../../../services/assest.service';
 import { AssetData } from '../../../../interfaces/AssestData';
+import { AssetmappingdialogComponent } from '../../assetmappingdialog/assetmappingdialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-assetview',
@@ -17,6 +19,7 @@ export class AssetviewComponent {
 
   constructor(private router: Router,
     private assestService:AssestService,
+    public dialog: MatDialog
   ){}
 
 createAssest() {
@@ -43,6 +46,18 @@ fetchAssestData(): void {
 
   navigateToDetails(asset: number| null | undefined): void {
     this.router.navigate(['/assestdetail',asset]);
+  }
+
+  assignAsset(asset: number| null | undefined): void {
+    const dialogRef = this.dialog.open(AssetmappingdialogComponent, {
+      backdropClass: "hello",
+      autoFocus: false,
+      data: { asset } // Pass the asset value here
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   filterAssestData(){

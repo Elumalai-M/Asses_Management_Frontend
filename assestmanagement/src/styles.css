@@ -9,8 +9,6 @@ html .mat-mdc-mini-fab.mat-accent {
 .p-paginator-current {
     color: blue;
 }
-
-
 button, textarea {
   
     color: white;
@@ -21,8 +19,12 @@ button, textarea {
     border-color: blue;
     margin-left: 4px;
 }
-
 .mdc-dialog__container {
 
     width: 630px;
 }
+.hello {
+    background-color:rgba(255,255,255,.3);
+    backdrop-filter: blur(10px);
+  }
+  

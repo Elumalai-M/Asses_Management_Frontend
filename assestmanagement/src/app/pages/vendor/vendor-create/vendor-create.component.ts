@@ -16,7 +16,10 @@ export class VendorCreateComponent {
 
   private subscription: Subscription = new Subscription();    
   vendorForm: FormGroup;
-  vendorData: vendor = {};
+  vendorData: vendor = {
+    vendorId: '',
+    vendorName: ''
+  };
 
   constructor(private fb: FormBuilder, private vendorService: VendorService, private router : Router, public dialogRef: MatDialogRef<VendorCreateComponent>) {
     this.vendorForm = this.fb.group({

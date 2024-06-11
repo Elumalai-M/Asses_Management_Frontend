@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -52,6 +51,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AssetmappingdialogComponent } from './pages/assest/assetmappingdialog/assetmappingdialog.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -73,7 +74,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     VendorlistComponent,
     VendorCreateComponent,
     EditVendorDialogComponentComponent,
-    AssetTrackerListComponent
+    AssetTrackerListComponent,
+    AssetmappingdialogComponent
  
   ],
   imports: [
@@ -110,7 +112,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     CalendarModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
+
      ],
   providers: [
     provideClientHydration(),

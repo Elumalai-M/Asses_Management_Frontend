@@ -4,3 +4,11 @@ mat-form-field{
     padding-top: 25px;
 
 }
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .button-container button {
+    margin-left: 15px; /* Adjust the value as needed */
+  }

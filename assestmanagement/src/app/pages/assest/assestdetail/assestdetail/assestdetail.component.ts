@@ -9,7 +9,7 @@ import { AssetData } from '../../../../interfaces/AssestData';
   styleUrl: './assestdetail.component.css'
 })
 export class AssestdetailComponent{
-  EmpID!: number;
+  EmpID!: String;
   assestDataList!: AssetData;
 Object: any;
 isEditMode = false;
@@ -27,7 +27,7 @@ editedAsset: any;
     this.fetchAssestDetail();
    }
   fetchAssestDetail():void {
-    this.EmpID = Number(this.route.snapshot.paramMap.get('asset'));
+    this.EmpID = String(this.route.snapshot.paramMap.get('asset'));
     console.log("empId",this.EmpID);
     this.assestService.getAssetById(this.EmpID).subscribe(
       (data: AssetData) => {
