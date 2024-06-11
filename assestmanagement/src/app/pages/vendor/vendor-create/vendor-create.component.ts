@@ -5,6 +5,7 @@ import { VendorService } from '../../../services/vendor.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-vendor-create',
@@ -17,7 +18,7 @@ export class VendorCreateComponent {
   vendorForm: FormGroup;
   vendorData: vendor = {};
 
-  constructor(private fb: FormBuilder, private vendorService: VendorService, private router : Router) {
+  constructor(private fb: FormBuilder, private vendorService: VendorService, private router : Router, public dialogRef: MatDialogRef<VendorCreateComponent>) {
     this.vendorForm = this.fb.group({
       vendorId: [''],
       vendorName: [''],
@@ -36,7 +37,7 @@ export class VendorCreateComponent {
     this.subscription.add(
       this.vendorService.saveVendorData(this.vendorData).subscribe()
     );
-
+    this.dialogRef.close(true);
     this.router.navigate(['vendorlist']);
    
   }
@@ -44,6 +45,13 @@ export class VendorCreateComponent {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
+
 }
 
 

@@ -192,3 +192,19 @@ button.p-button-text:hover {
     justify-content: center;
     width: 70px;
   }
+
+  :host ::ng-deep .mat-mdc-text-field-wrapper {
+    width: 100% !important; /* Adjust width as needed */
+}
+
+:host ::ng-deep .mat-dialog-content {
+    overflow: hidden !important; /* Remove scrollbar */
+}
+
+.mat-form-field {
+    width: 100%; /* Ensure form fields take full width */
+}
+
+.col-md-6 {
+    max-width: 1000px;
+}

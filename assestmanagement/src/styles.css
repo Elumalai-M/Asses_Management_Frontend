@@ -6,3 +6,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html .mat-mdc-mini-fab.mat-accent {
     --mdc-fab-small-container-color: #4d484a;
 }
+.p-paginator-current {
+    color: blue;
+}
+
+
+button, textarea {
+  
+    color: white;
+    border-color: white;
+    border-left-width: 10px;
+    background-color: blue;
+    border-radius: 9px;
+    border-color: blue;
+    margin-left: 4px;
+}
+
+.mdc-dialog__container {
+
+    width: 630px;
+}

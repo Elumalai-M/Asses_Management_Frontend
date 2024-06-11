@@ -11,7 +11,7 @@
             <div class="icon-button-row">
                 <div class="icon-flex-container">
                 <div class="icon-button-container">
-                <button mat-fab   (click)="openNew()" color="primary">
+                <button mat-fab   (click)="openNewVendorDialog()" color="primary">
                 <mat-icon>add</mat-icon>
                 </button>
                 </div>
@@ -40,74 +40,78 @@
     </p-toolbar>
 
 
-    <p-dialog class="bold-header" header="Edit Vendor Details" [(visible)]="displayDialog" [modal]="true" [style]="{ 'width': '60rem' }"
-        [baseZIndex]="10000" (onHide)="onDialogHide()">
-        <div class="card">
-        <div class="container">
-            <div *ngIf="selectedVendor">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="vendorId">Vendor ID</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input pInputText id="editVendorId" class="flex-auto" [(ngModel)]="selectedVendor.vendorId" autocomplete="off" readonly/>
-                    </div>
+ <!-- Angular Material Dialog Template -->
+<ng-template #editVendorDialog let-data="data" >
+    <h2 mat-dialog-title>Edit Vendor Details</h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="container" *ngIf="selectedVendor" style="width: 100%;">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="vendorId">Vendor ID</label>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="vendorName">Vendor Name</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input pInputText id="editVendorName" class="flex-auto" [(ngModel)]="selectedVendor.vendorName" autocomplete="off"/>
-                    </div>
+                <div class="col-md-6" >
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput id="editVendorId" [(ngModel)]="selectedVendor.vendorId" autocomplete="off" readonly />
+                    </mat-form-field>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input pInputText id="editEmail" class="flex-auto" [(ngModel)]="selectedVendor.email" autocomplete="off"/>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="vendorName">Vendor Name</label>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="poc">Point of Contact</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input pInputText id="editPoc" class="flex-auto" [(ngModel)]="selectedVendor.poc" autocomplete="off"/>
-                    </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput id="editVendorName" [(ngModel)]="selectedVendor.vendorName" autocomplete="off" />
+                    </mat-form-field>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="contactNumber">Contact Number</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input pInputText id="editContactNumber" class="flex-auto" [(ngModel)]="selectedVendor.contactNumber" autocomplete="off"/>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="email">Email</label>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="gstNumber">GST Number</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input pInputText id="editgstNumber" class="flex-auto" [(ngModel)]="selectedVendor.gstNo" autocomplete="off"/>
-                    </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput id="editEmail" [(ngModel)]="selectedVendor.email" autocomplete="off" />
+                    </mat-form-field>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="table-footer button-area">
-                        <div class="col-md-6">
-                            <button  severity="secondary" class="btn btn-success btn-lg back back-button" (click)="displayDialog = false; onCancelEdit()">Cancel</button>
-                        </div>
-                        <div class="col-md-6 ">
-                            <button class="btn btn-success btn-lg  submit-button" (click)="saveEditedVendor()" [disabled]="!selectedVendor">Save</button>
-                        </div>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="poc">Point of Contact</label>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput id="editPoc" [(ngModel)]="selectedVendor.poc" autocomplete="off" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="contactNumber">Contact Number</label>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput id="editContactNumber" [(ngModel)]="selectedVendor.contactNumber" autocomplete="off" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="gstNumber">GST Number</label>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput id="editgstNumber" [(ngModel)]="selectedVendor.gstNo" autocomplete="off" />
+                    </mat-form-field>
                 </div>
             </div>
         </div>
-        </div>
-    </p-dialog>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close (click)="displayDialog = false; onCancelEdit()">Cancel</button>
+        <button mat-button color="primary" (click)="saveEditedVendor()" [disabled]="!selectedVendor">Save</button>
+    </mat-dialog-actions>
+</ng-template>
     
 
 

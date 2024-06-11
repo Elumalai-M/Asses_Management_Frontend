@@ -1,56 +1,31 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-10  text-md-center">
-            <h4><b>Vendor Details</b></h4>
-        </div>
-    </div>
-    <form [formGroup]="vendorForm" (ngSubmit)="onSubmit()" class="table-content">
-        <div class="container">
-            
-            <div class="row">
-                <div class="col-md-2">
-                    <label for="vendorName">Vendor Name</label>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" id="vendorName" formControlName="vendorName">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <label for="email">Email</label>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" id="email" formControlName="email">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <label for="poc">Point of Contact</label>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" id="poc" formControlName="poc">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <label for="contactNumber">Contact Number</label>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber">
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="table-footer button-area">
-                    <div class="col-md-6">
-                        <a href="#" routerLink="/vendorlist" class="btn btn-success btn-lg back back-button"><i
-                                class='fas fa-arrow-circle-left'></i> Back</a>
-                    </div>
-                    <div class="col-md-6 ">
-                        <button class="btn btn-success btn-lg  submit-button" type="submit">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+<h2 mat-dialog-title>Vendor Details</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="vendorForm" (ngSubmit)="onSubmit()" style="width: 500px;">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Vendor Name</mat-label>
+      <input matInput formControlName="vendorName" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Point of Contact</mat-label>
+      <input matInput formControlName="poc" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Contact Number</mat-label>
+      <input matInput formControlName="contactNumber" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>GST Number</mat-label>
+        <input matInput formControlName="gstNo" />
+      </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close  style="background-color: rgb(245, 73, 87);color: aliceblue;">Cancel</button>
+  <button mat-button  (click)="onSubmit()" style="background-color: blue;color: aliceblue;">Submit</button>
+</mat-dialog-actions>

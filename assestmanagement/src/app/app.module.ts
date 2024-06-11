@@ -49,6 +49,10 @@ import { EditVendorDialogComponentComponent } from './pages/vendor/edit-vendor-d
 import { CardModule, } from 'primeng/card';
 import { AssetTrackerListComponent } from './pages/asset-tracker/asset-tracker-list/asset-tracker-list.component';
 import { CalendarModule } from 'primeng/calendar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -103,7 +107,10 @@ import { CalendarModule } from 'primeng/calendar';
     DropdownModule,
     ConfirmDialogModule,
     CardModule,
-    CalendarModule
+    CalendarModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
      ],
   providers: [
     provideClientHydration(),

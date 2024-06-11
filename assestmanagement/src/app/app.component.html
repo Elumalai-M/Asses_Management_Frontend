@@ -1,13 +1,15 @@
 <ng-container *ngIf="!router.url.includes('login'); else elseBlock">
 <mat-toolbar color="primary">
 	<mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-		<button mat-mini-fab class="menu-icon"  (click)="drawer.toggle()">
-      <mat-icon fxFlex fxHide="false" fxHide.xs>menu</mat-icon>
-      <mat-icon fxFlex fxShow="false" fxShow.xs>more_vert</mat-icon>
+		<button mat-mini-fab class="menu-icon"  (click)="drawer.toggle()" style="background-color: white;">
+      <mat-icon fxFlex fxHide="false" fxHide.xs style="color: blue;">menu</mat-icon>
+      <mat-icon fxFlex fxShow="false" fxShow.xs style="color: blue;">more_vert</mat-icon>
 		</button>
 		<span></span>
 		<div fxLayout="row" fxLayoutAlign="end center">
-		<button mat-button (click)="logout()">Logout</button>
+		<button mat-mini-fab (click)="logout()" style="color: blue;background-color: white; margin-left: 1175px;">
+		<mat-icon>logout</mat-icon>
+		</button>
 	</div>
 	</mat-toolbar-row>
 </mat-toolbar>

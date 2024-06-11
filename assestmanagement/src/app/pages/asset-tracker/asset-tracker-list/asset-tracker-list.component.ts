@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild,TemplateRef} from '@angular/core';
 import { AssetTrackerTableData } from '../../../interfaces/AssetTrackerTableData';
 import { Observable, Subscription } from 'rxjs';
 import { AssetTrackerService } from '../../../services/asset-tracker.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-asset-tracker-list',
@@ -14,6 +17,7 @@ export class AssetTrackerListComponent implements OnInit {
   assetTrackerList!: AssetTrackerTableData[];
   assetTrackerFilterDatalist!: AssetTrackerTableData[];
   selectedAssetTrackerData: AssetTrackerTableData | null = null;
+  tempAssetTrackerData: AssetTrackerTableData | null = null;
   displayDialog: boolean = false;
 
   private subscription: Subscription = new Subscription(); 
@@ -21,8 +25,11 @@ export class AssetTrackerListComponent implements OnInit {
   productDialog: boolean = false;
   blurTable: boolean = false;
 
+  @ViewChild('editAssetTrackerDialog') editAssetTrackerDialog!: TemplateRef<any>;
+
   constructor(private assetTrackerService: AssetTrackerService,
-    private router : Router
+    private router : Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -51,16 +58,31 @@ filterAssetTrackerData(){
   }
 }
 
-openEditDialog(assettrackerData: any) {
-  this.selectedAssetTrackerData = { ...assettrackerData }; // Set selected vendor data (create a copy)
-  this.displayDialog = true; // Show the dialog
-  this.blurTable = true; // Blur the table
+// openEditDialog(assettrackerData: any) {
+//   this.selectedAssetTrackerData = { ...assettrackerData }; // Set selected vendor data (create a copy)
+//   this.displayDialog = true; // Show the dialog
+//   this.blurTable = true; // Blur the table
 
  
+// }
+
+openEditDialog(assettrackerData: any): void {
+  this.selectedAssetTrackerData = assettrackerData;
+  this.tempAssetTrackerData = { ...assettrackerData }; // Create a copy for editing
+  const dialogRef = this.dialog.open(this.editAssetTrackerDialog);
+  this.blurTable = true; 
+
+  dialogRef.afterClosed().subscribe(result => {
+    this.selectedAssetTrackerData = null; // Clear selected vendor data
+    this.tempAssetTrackerData = null;
+     this.displayDialog = false; // Close the dialog
+     this.blurTable = false;
+  });
 }
 
 onCancelEdit() {
-  this.selectedAssetTrackerData = null; // Clear selected vendor data
+  this.selectedAssetTrackerData = null; 
+// Clear selected vendor data
   this.displayDialog = false; // Close the dialog
   this.blurTable = false; // Unblur the table
 }
@@ -73,7 +95,8 @@ onDialogHide() {
 saveEditedVAssetTrackerData() {
   // Call your API to save edited vendor details
   // Close the dialog after saving
-  if (this.selectedAssetTrackerData) {
+  if (this.selectedAssetTrackerData && this.tempAssetTrackerData) {
+    Object.assign(this.selectedAssetTrackerData, this.tempAssetTrackerData);
     this.assetTrackerService.updateAssetTrackerDataData(this.selectedAssetTrackerData).subscribe(
       response => {
         console.log('Successfully saved:', response);
@@ -81,12 +104,11 @@ saveEditedVAssetTrackerData() {
         // For example, you can refresh the vendor list or display a success message
         this.displayDialog = false;
         this.blurTable = false;
+        this.dialog.closeAll();
        this.ngOnInit();
       },
       error => {
         console.error('Error occurred while saving:', error);
-        // Optionally, handle the error here
-        // For example, you can display an error message to the user
       }
     );
   }
