@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -49,6 +48,8 @@ import { EditVendorDialogComponentComponent } from './pages/vendor/edit-vendor-d
 import { CardModule, } from 'primeng/card';
 import { AssetTrackerListComponent } from './pages/asset-tracker/asset-tracker-list/asset-tracker-list.component';
 import { CalendarModule } from 'primeng/calendar';
+import { AssetmappingdialogComponent } from './pages/assest/assetmappingdialog/assetmappingdialog.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -69,7 +70,8 @@ import { CalendarModule } from 'primeng/calendar';
     VendorlistComponent,
     VendorCreateComponent,
     EditVendorDialogComponentComponent,
-    AssetTrackerListComponent
+    AssetTrackerListComponent,
+    AssetmappingdialogComponent
  
   ],
   imports: [
@@ -103,7 +105,8 @@ import { CalendarModule } from 'primeng/calendar';
     DropdownModule,
     ConfirmDialogModule,
     CardModule,
-    CalendarModule
+    CalendarModule,
+    MatAutocompleteModule
      ],
   providers: [
     provideClientHydration(),

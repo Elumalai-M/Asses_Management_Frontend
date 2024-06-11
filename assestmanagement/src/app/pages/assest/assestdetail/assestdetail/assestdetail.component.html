@@ -28,9 +28,13 @@
         <td><strong>Cost:</strong></td>
         <td>{{ assestDataList.asset.cost }}</td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td><strong>ManagedBy:</strong></td>
         <td>{{ assestDataList.asset.managedBy }}</td>
+      </tr> -->
+      <tr>
+        <td><strong>DC Number:</strong></td>
+        <td>{{ assestDataList.asset.dcNumber }}</td>
       </tr>
       <tr>
         <td><strong>ModelNumber:</strong></td>
@@ -144,10 +148,10 @@
           <td><strong>WiFi MAC Address:</strong></td>
           <td>{{ assestDataList.itasset.wifiMacAddress }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td><strong>DC Number:</strong></td>
           <td>{{ assestDataList.itasset.dcNumber }}</td>
-        </tr>
+        </tr> -->
         <tr>
           <td><strong>OS:</strong></td>
           <td>{{ assestDataList.itasset.os }}</td>
@@ -215,9 +219,13 @@
         <td><strong>Cost:</strong></td>
         <td><input type="text" [(ngModel)]="assestDataList.asset.cost"></td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td><strong>ManagedBy:</strong></td>
         <td><input type="text" [(ngModel)]="assestDataList.asset.managedBy"></td>
+      </tr> -->
+      <tr>
+        <td><strong>DC Number:</strong></td>
+        <td><input type="text" [(ngModel)]="assestDataList.asset.dcNumber"></td>
       </tr>
       <tr>
         <td><strong>ModelNumber:</strong></td>
@@ -333,10 +341,10 @@
             <td><strong>WiFi MAC Address:</strong></td>
             <td><input type="text" [(ngModel)]="assestDataList.itasset.wifiMacAddress"></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td><strong>DC Number:</strong></td>
             <td><input type="text" [(ngModel)]="assestDataList.itasset.dcNumber"></td>
-        </tr>
+        </tr> -->
         <tr>
             <td><strong>OS:</strong></td>
             <td><input type="text" [(ngModel)]="assestDataList.itasset.os"></td>

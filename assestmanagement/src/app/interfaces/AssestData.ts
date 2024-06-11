@@ -17,6 +17,7 @@ export interface Asset {
     cost: number | null;
     status: string | null;
     operationalStatus: string | null;
+    dcNumber: string | null;
     assetType: string | null;
     category: string | null;
 }

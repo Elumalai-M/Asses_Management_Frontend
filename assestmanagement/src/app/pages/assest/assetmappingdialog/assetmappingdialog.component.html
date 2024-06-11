@@ -1,0 +1,42 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="container form-container"
+>
+  <div class="row">
+    <div class="col-sm-12 header-container">
+      <h1>AssetMapping</h1>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group employeeDropdown">
+            <label for="employeeId">Employee ID:</label>
+            <!-- <input type="text" id="employeeId" formControlName="employeeId" /> -->
+            <mat-form-field appearance="fill" class="custom-form-field">
+                <input type="text" id="employeeId" formControlName="employeeId" matInput [matAutocomplete]="auto"  class="custom-input"/>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let op of filteredOptions | async" [value]="op">
+                        {{ op }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label for="assetId">Asset ID:</label>
+            <input type="text" id="assetId" formControlName="assetId" />
+          </div>
+      <div class="form-group">
+        <label for="assignDate">Assign Date:</label>
+        <input type="date" id="assignDate" formControlName="assignDate" />
+      </div>
+      <div class="form-group">
+        <label for="remark">Remark:</label>
+        <input type="text" id="remark" formControlName="remark" />
+      </div>
+      
+      <div class="button-group">
+        <button type="button" (click)="onCancel()">Cancel</button>
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
