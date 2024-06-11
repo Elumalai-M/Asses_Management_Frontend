@@ -172,3 +172,39 @@ button.p-button-text:hover {
     background-color: #8fbdee;
 
 }
+
+.icon-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  .icon-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+   
+  .icon-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+   
+  .icon-button-container {
+    display: flex;
+    justify-content: center;
+    width: 70px;
+  }
+
+  :host ::ng-deep .mat-mdc-text-field-wrapper {
+    width: 100% !important; /* Adjust width as needed */
+}
+
+:host ::ng-deep .mat-dialog-content {
+    overflow: hidden !important; /* Remove scrollbar */
+}
+
+.mat-form-field {
+    width: 100%; /* Ensure form fields take full width */
+}
+
+.col-md-6 {
+    max-width: 1000px;
+}

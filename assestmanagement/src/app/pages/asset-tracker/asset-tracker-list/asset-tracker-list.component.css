@@ -183,3 +183,15 @@ button.p-button-text:hover {
 
 /* styles.css or your-component.component.css */
 
+.asset-field{
+    width: 110%;
+}
+
+.right-align {
+    display: flex;
+    justify-content: flex-end;
+}
+.col-md-6{
+    max-width: 1000px;
+}
+

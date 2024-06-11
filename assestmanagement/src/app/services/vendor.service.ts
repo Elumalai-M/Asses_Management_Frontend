@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable , of } from 'rxjs';
 import { vendor } from '../interfaces/vendor';
-import { tap } from 'rxjs/operators';
+import { tap , catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,13 @@ export class VendorService {
       .pipe(
         tap(
           (response) => console.log('Successfully saved:', response),
-          // (error) => console.error('Error occurred while saving:', error)
-        )
+           (error) => console.error('Error occurred while saving:', error)
+        ), 
+
+        catchError(error => {
+          console.error('Error occurred:', error);
+          return of(null); // or throwError(error) if you want to propagate the error
+        })
       );
   }
 

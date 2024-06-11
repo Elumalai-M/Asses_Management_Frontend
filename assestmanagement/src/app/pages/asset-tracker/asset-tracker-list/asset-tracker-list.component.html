@@ -14,101 +14,190 @@
     </p-toolbar>
 
 
-    <p-dialog class="bold-header" header="Update Details" [(visible)]="displayDialog" [modal]="true"
-        [style]="{ 'width': '60rem' }" [baseZIndex]="10000" (onHide)="onDialogHide()">
-        <div class="card">
-            <div class="container">
-                <div *ngIf="selectedAssetTrackerData">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="assetAssignId">Asset AssignId</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input pInputText id="editAssetAssignId" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.assetAssignId" autocomplete="off" readonly />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="assetId">Asset ID</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input pInputText id="editAssetId" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.assetId" autocomplete="off" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="assetName">Asset Name</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input pInputText id="editAssetName" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.assetName" autocomplete="off" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="assignDate">Assign Date</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input pInputText id="editAssignDate" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.assignDate" autocomplete="off" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="returnDate">Return Date</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p-calendar id="editReturnDate" class="custom-calendar flex-auto" [(ngModel)]="selectedAssetTrackerData.returnDate"
-                            [showIcon]="true"  dateFormat="mm/dd/yy" ></p-calendar>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="employeeId">Employee Id</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input pInputText id="editEmployeeId" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.employeeId" autocomplete="off" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="employeeName">Employee Name</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input pInputText id="editEmployeeName" class="flex-auto"
-                                [(ngModel)]="selectedAssetTrackerData.employeeName" autocomplete="off" />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="remark">Remark</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input pInputText id="editRemark" class="flex-auto remark-input"
-                                [(ngModel)]="selectedAssetTrackerData.remark" autocomplete="off" />
-                        </div>
-                    </div>
-            
-                </div>
-                <br>
-                <div class="row">
-                    <div class="table-footer button-area">
-                        <div class="col-md-6">
-                            <button severity="secondary" class="btn btn-success btn-lg back back-button"
-                                (click)="displayDialog = false; onCancelEdit()">Cancel</button>
-                        </div>
-                        <!-- <div class="col-md-6 ">
-                            <button class="btn btn-success btn-lg  submit-button" (click)="saveEditedVendor()" [disabled]="!selectedVendor">Save</button>
-                        </div> -->
-                    </div>
-                </div>
+    <ng-template #editAssetTrackerDialog let-data="data" >
+      <h2 mat-dialog-title>Edit Asset Tracker Details</h2>
+      <mat-dialog-content class="mat-typography">
+          <div class="container" *ngIf="tempAssetTrackerData" style="width: 100%;">
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label>Asset AssignId</mat-label>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput id="editAssetAssignId" [(ngModel)]="tempAssetTrackerData.assetAssignId" autocomplete="off" readonly />
+                </mat-form-field>
+              </div>
             </div>
-        </div>
-    </p-dialog>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label>Asset ID</mat-label>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput id="editAssetId" [(ngModel)]="tempAssetTrackerData.assetId" autocomplete="off" readonly />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label>Asset Name</mat-label>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput id="editAssetName" [(ngModel)]="tempAssetTrackerData.assetName" autocomplete="off" readonly />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label>Assign Date</mat-label>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput id="editAssignDate" [(ngModel)]="tempAssetTrackerData.assignDate" autocomplete="off" readonly />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label>Return Date</mat-label>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput [matDatepicker]="picker" id="editReturnDate" autocomplete="off" readonly [(ngModel)]="tempAssetTrackerData.returnDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label>Employee Name</mat-label>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput id="editEmployeeName" [(ngModel)]="tempAssetTrackerData.employeeName" autocomplete="off" readonly />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-label>Remark</mat-label>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput id="editRemark" [(ngModel)]="tempAssetTrackerData.remark" autocomplete="off" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          
+      </mat-dialog-content>
+
+      <mat-dialog-actions align="end">
+          <button mat-button mat-dialog-close (click)="displayDialog = false; onCancelEdit()">Cancel</button>
+          <button mat-button color="primary" (click)="saveEditedVAssetTrackerData()" [disabled]="!tempAssetTrackerData">Save</button>
+      </mat-dialog-actions>
+  </ng-template>
+
+
+    <!-- <mat-dialog-content>
+        
+          <div class="container">
+            <div *ngIf="selectedAssetTrackerData">
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Asset AssignId</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput id="editAssetAssignId" [(ngModel)]="selectedAssetTrackerData.assetAssignId" autocomplete="off" readonly />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Asset ID</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput id="editAssetId" [(ngModel)]="selectedAssetTrackerData.assetId" autocomplete="off" readonly />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Asset Name</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput id="editAssetName" [(ngModel)]="selectedAssetTrackerData.assetName" autocomplete="off" readonly />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Assign Date</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput id="editAssignDate" [(ngModel)]="selectedAssetTrackerData.assignDate" autocomplete="off" readonly />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Return Date</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input type="date" matInput id="returnDate" [(ngModel)]="selectedAssetTrackerData.returnDate" class="asset-field" />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Employee Id</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput id="editEmployeeId" [(ngModel)]="selectedAssetTrackerData.employeeId" autocomplete="off" readonly />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Employee Name</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput id="editEmployeeName" [(ngModel)]="selectedAssetTrackerData.employeeName" autocomplete="off" readonly />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-label>Remark</mat-label>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <input matInput id="editRemark" [(ngModel)]="selectedAssetTrackerData.remark" autocomplete="off" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <mat-dialog-actions align="end">
+          <button mat-button mat-dialog-close (click)="onCancelEdit()">Cancel</button>
+        <button mat-button color="primary" (click)="saveEditedVAssetTrackerData()" [disabled]="!selectedAssetTrackerData">
+          Save
+        </button>
+    </mat-dialog-actions>
+      </mat-dialog-content> -->
+      
+      
 
 
 
@@ -117,8 +206,8 @@
     <p-table #dt [value]="assetTrackerFilterDatalist" [rows]="5" [paginator]="true"
         [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
         [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="selectedAssetTrackerData" [rowHover]="true" dataKey="id"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
-        class="table table-hover" [class.table-dialog-blur]="blurTable">
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" 
+        class="table table-hover" [class.table-dialog-blur]="blurTable" >
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 4rem">
@@ -134,6 +223,7 @@
                 <th>Assign Date </th>
                 <th>Return Date</th>
                 <th>Remark</th>
+                <th>Action</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-assetTrackerData let-i="index">
@@ -149,10 +239,13 @@
                 <td>{{ assetTrackerData.assignDate }}</td>
                 <td>{{ assetTrackerData.returnDate }}</td>
                 <td>{{ assetTrackerData.remark }}</td>
-                <td>
+                <!-- <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
                         (click)="openEditDialog(assetTrackerData)">Edit</button>
-                </td>
+                </td> -->
+                <td> <button mat-mini-fab  (click)="openEditDialog(assetTrackerData)">
+                    <mat-icon>edit</mat-icon>
+                </button></td>
                 <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
                 >Edit</button>
         </td> -->

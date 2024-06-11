@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { VendorService } from '../../services/vendor.service';
 import { vendor } from '../../interfaces/vendor';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms'; 
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { VendorCreateComponent } from '../vendor/vendor-create/vendor-create.component';
 
 @Component({
   selector: 'app-vendorlist',
@@ -31,9 +33,12 @@ export class VendorlistComponent implements OnInit {
   selectedVendors!: vendor[] | null;
   blurTable: boolean = false;
 
+  @ViewChild('editVendorDialog') editVendorDialog!: TemplateRef<any>;
+
 
   constructor(private vendorService: VendorService,
-    private router : Router
+    private router : Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -76,12 +81,24 @@ filterVendorData(){
     }
   }
 
-  openEditDialog(vendorData: any) {
-    this.selectedVendor = { ...vendorData }; // Set selected vendor data (create a copy)
-    this.displayDialog = true; // Show the dialog
-    this.blurTable = true; // Blur the table
+  //   openEditDialog(vendorData: any) {
+  //     this.selectedVendor = { ...vendorData }; // Set selected vendor data (create a copy)
+  //     this.displayDialog = true; // Show the dialog
+  //     this.blurTable = true; // Blur the table
 
-   
+    
+  // }
+
+  openEditDialog(vendorData: any): void {
+    this.selectedVendor = vendorData;
+    const dialogRef = this.dialog.open(this.editVendorDialog);
+    this.blurTable = true; 
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedVendor = null; // Clear selected vendor data
+       this.displayDialog = false; // Close the dialog
+       this.blurTable = false;
+    });
 }
 
 saveEditedVendor() {
@@ -114,6 +131,22 @@ onCancelEdit() {
 
 onDialogHide() {
   this.blurTable = false;
+}
+
+openNewVendorDialog() {
+  const dialogRef = this.dialog.open(VendorCreateComponent, {
+    autoFocus: false
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // Handle the result if necessary
+    }
+    this.fetchVendorData().subscribe(data => {
+      this.vedorDataList = data;
+      this.filterDataList = [...this.vedorDataList];
+    });
+  });
 }
 
 }
