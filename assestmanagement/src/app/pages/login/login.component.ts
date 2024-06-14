@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,9 @@ export class LoginComponent{
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private appComponent : AppComponent
+    private appComponent : AppComponent,
+    private spinner: NgxSpinnerService // Inject NgxSpinnerService
+
   ){}
 
    ngOnInit(): void {
@@ -39,6 +42,7 @@ export class LoginComponent{
   }
 
   loginUser(){
+    this.spinner.show(); // Show spinner on login attempt
     const postData = this.loginForm.value;
     console.log(postData);  
     this.authService.login(postData as User).subscribe(
@@ -58,6 +62,8 @@ export class LoginComponent{
         this.loginError = "Invalid credentials.";
   
       }
-    );
+    ).add(() => {
+      this.spinner.hide(); // Hide spinner after login attempt completes
+    });
   }
 }

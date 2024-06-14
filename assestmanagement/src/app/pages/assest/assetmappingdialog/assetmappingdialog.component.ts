@@ -16,7 +16,8 @@ export class AssetmappingdialogComponent {
 
   options: string[] = ['Employee1', 'Employee2', 'Employee3']; // Replace with your actual options
   empData!: EmployeeData[];
-  filteredOptions!: Observable<string[]>;
+  //filteredOptions!: Observable<string[]>;
+  filteredOptions!: Observable<EmployeeData[]>;
 
   asset: number | null | undefined;
 
@@ -60,11 +61,19 @@ export class AssetmappingdialogComponent {
   }
 
 
-  private _filter(value: string): string[] {
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
+  //   return this.empData
+  //     .map(emp => emp.employeeId) 
+  //     .filter(emp => emp.toLowerCase().includes(filterValue));
+  // }
+
+  private _filter(value: string): EmployeeData[] {
     const filterValue = value.toLowerCase();
-    return this.empData
-      .map(emp => emp.employeeId) 
-      .filter(emp => emp.toLowerCase().includes(filterValue));
+    return this.empData.filter(emp =>
+      emp.employeeId.toLowerCase().includes(filterValue) ||
+      emp.firstName.toLowerCase().includes(filterValue)
+    );
   }
 
   onSubmit() {

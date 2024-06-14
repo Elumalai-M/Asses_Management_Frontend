@@ -14,8 +14,8 @@
             <mat-form-field appearance="fill" class="custom-form-field">
                 <input type="text" id="employeeId" formControlName="employeeId" matInput [matAutocomplete]="auto"  class="custom-input"/>
                 <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let op of filteredOptions | async" [value]="op">
-                        {{ op }}
+                    <mat-option *ngFor="let op of filteredOptions | async" [value]="op.employeeId">
+                      {{ op.employeeId }} - {{ op.firstName }}
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
