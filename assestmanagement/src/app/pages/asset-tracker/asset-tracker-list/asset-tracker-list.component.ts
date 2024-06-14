@@ -5,12 +5,15 @@ import { AssetTrackerService } from '../../../services/asset-tracker.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+
 
 
 @Component({
   selector: 'app-asset-tracker-list',
   templateUrl: './asset-tracker-list.component.html',
-  styleUrl: './asset-tracker-list.component.css'
+  styleUrl: './asset-tracker-list.component.css',
+ 
 })
 export class AssetTrackerListComponent implements OnInit {
 
@@ -19,6 +22,7 @@ export class AssetTrackerListComponent implements OnInit {
   selectedAssetTrackerData: AssetTrackerTableData | null = null;
   tempAssetTrackerData: AssetTrackerTableData | null = null;
   displayDialog: boolean = false;
+  
 
   private subscription: Subscription = new Subscription(); 
   searchTxt: string = '';
@@ -29,7 +33,9 @@ export class AssetTrackerListComponent implements OnInit {
 
   constructor(private assetTrackerService: AssetTrackerService,
     private router : Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private datePipe: DatePipe
+   
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +75,8 @@ filterAssetTrackerData(){
 openEditDialog(assettrackerData: any): void {
   this.selectedAssetTrackerData = assettrackerData;
   this.tempAssetTrackerData = { ...assettrackerData }; // Create a copy for editing
+
+
   const dialogRef = this.dialog.open(this.editAssetTrackerDialog);
   this.blurTable = true; 
 
@@ -113,6 +121,15 @@ saveEditedVAssetTrackerData() {
     );
   }
 }
+
+onDateChange(event: MatDatepickerInputEvent<Date>) {
+  if (this.tempAssetTrackerData) {
+    this.tempAssetTrackerData.returnDate = this.datePipe.transform(event.value, 'yyyy-MM-dd') || '';
+  }
+}
+
+
+
 
 }
 

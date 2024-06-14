@@ -23,15 +23,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AssetviewComponent } from './pages/assest/view/assetview/assetview.component';
-import { AssestdetailComponent } from './pages/assest/assestdetail/assestdetail/assestdetail.component';
-
+import { DatePipe } from '@angular/common'; // Import DatePipe
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { FormsModule } from '@angular/forms';
-import { EmployeeDetailComponent } from './pages/emp/employ/employee-detail/employee-detail.component';
-import { EmployeeCeateComponent } from './pages/emp/employee-ceate/employee-ceate.component'; // Import FormsModule
+ // Import FormsModule
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { VendorlistComponent } from './pages/vendorlist/vendorlist.component';
-
 import { MatTableModule } from '@angular/material/table';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar'; 
@@ -43,20 +39,23 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { VendorCreateComponent } from './pages/vendor/vendor-create/vendor-create.component';
-import { EditVendorDialogComponentComponent } from './pages/vendor/edit-vendor-dialog-component/edit-vendor-dialog-component.component';
 import { CardModule, } from 'primeng/card';
-import { AssetTrackerListComponent } from './pages/asset-tracker/asset-tracker-list/asset-tracker-list.component';
 import { CalendarModule } from 'primeng/calendar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AssetmappingdialogComponent } from './pages/assest/assetmappingdialog/assetmappingdialog.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
-
+import { EmployeeDetailComponent } from './pages/emp/employ/employee-detail/employee-detail.component';
+import { EmployeeCeateComponent } from './pages/emp/employee-ceate/employee-ceate.component';
+import { AssestdetailComponent } from './pages/assest/assestdetail/assestdetail/assestdetail.component';
+import { AssetmappingdialogComponent } from './pages/assest/assetmappingdialog/assetmappingdialog.component';
+import { VendorCreateComponent } from './pages/vendor/vendor-create/vendor-create.component';
+import { VendorlistComponent } from './pages/vendorlist/vendorlist.component'
+import { EditVendorDialogComponentComponent } from './pages/vendor/edit-vendor-dialog-component/edit-vendor-dialog-component.component';
+import { AssetTrackerListComponent } from './pages/asset-tracker/asset-tracker-list/asset-tracker-list.component';
 
 
 @NgModule({
@@ -117,6 +116,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
      ],
   providers: [
+     DatePipe, 
     provideClientHydration(),
     provideAnimationsAsync(),
     ConfirmationService,

@@ -6,7 +6,7 @@ export interface AssetTracker {
     assetName: string;
     employeeName: string;
     assignDate: string;
-    returnDate: string;
+    returnDate: String;
     remark: string;
   }
   
