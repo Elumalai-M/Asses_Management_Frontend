@@ -23,7 +23,7 @@
           </svg></button>
       </div>
       <div [ngClass]="viewMode === 'table' ? 'table-view' : 'card-view'">
-      <table class="table" *ngIf="viewMode === 'table'">
+      <table class="table bordered-table" *ngIf="viewMode === 'table'">
         <thead>
           <tr>
             <th scope="col"></th>

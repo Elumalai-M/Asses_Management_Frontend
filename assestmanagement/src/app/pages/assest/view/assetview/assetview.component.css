@@ -179,3 +179,28 @@ img:hover{
   justify-content: space-around;
   /* overflow: hidden; */
 }
+
+.bordered-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .bordered-table th,
+  .bordered-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .bordered-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .bordered-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .bordered-table tr:hover {
+    background-color: #ddd;
+  }
+  
