@@ -12,6 +12,7 @@ import { vendor } from "./vendor";
 export interface Asset {
     assetId: number | null;
     assetName: string | null;
+    asset: string | null;
     managedBy: string | null;
     modelNumber: string | null;
     serialNumber: string | null;

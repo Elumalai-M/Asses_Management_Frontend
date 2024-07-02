@@ -22,7 +22,14 @@
           </div>
           <div class="form-group">
             <label for="assetId">Asset ID:</label>
-            <input type="text" id="assetId" formControlName="assetId" />
+            <mat-form-field appearance="fill" class="custom-form-field">
+            <input type="text" id="assetId" formControlName="assetId" matInput [matAutocomplete]="auto"  class="custom-input"/>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let op of assetDropDownData | async" [value]="op.asset.assetName">
+                {{ op.asset.assetName }} - {{ op.asset.assetType }}
+              </mat-option>
+          </mat-autocomplete>
+          </mat-form-field>
           </div>
       <div class="form-group">
         <label for="assignDate">Assign Date:</label>

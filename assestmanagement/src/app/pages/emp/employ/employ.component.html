@@ -36,6 +36,7 @@
             <th scope="col">Contact Number</th>
             <th scope="col">Date of Birth</th>
             <th scope="col">Designation</th>
+            <th scope="col">Assign Asset</th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +53,9 @@
             <td>{{ employee.contactNumber }}</td>
             <td>{{ employee.dateOfBirth }}</td>
             <td>{{ employee.designation }}</td>
+            <td>
+              <button  (click)="assignAsset(employee?.employeeId)">Assign Asset</button>
+            </td>
             <td>
               <button  (click)="navigateToDetails(employee.employeeId)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
