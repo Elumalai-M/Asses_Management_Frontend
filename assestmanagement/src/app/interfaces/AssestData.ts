@@ -1,3 +1,5 @@
+import { vendor } from "./vendor";
+
   // Interface for the overall form data structure
   export  interface AssetData {
     asset: Asset;
@@ -10,6 +12,7 @@
 export interface Asset {
     assetId: number | null;
     assetName: string | null;
+    asset: string | null;
     managedBy: string | null;
     modelNumber: string | null;
     serialNumber: string | null;
@@ -20,6 +23,9 @@ export interface Asset {
     dcNumber: string | null;
     assetType: string | null;
     category: string | null;
+    rent: number | null;
+    serviceTag: string;
+    vendors: vendor;
 }
   
   // Interface for the 'fixedassest' object

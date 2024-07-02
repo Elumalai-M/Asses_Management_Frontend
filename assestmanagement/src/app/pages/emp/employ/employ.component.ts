@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { EmployeeServiceService } from '../../../services/employee-service.service';
 import { EmployeeData } from '../../../interfaces/EmployeeData';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AssetmappingdialogComponent } from '../../assest/assetmappingdialog/assetmappingdialog.component';
 
 @Component({
   selector: 'app-employ',
@@ -19,7 +21,9 @@ export class EmployComponent {
 
 
   constructor(private router: Router,
-    private employeeService: EmployeeServiceService) {
+    private employeeService: EmployeeServiceService,
+    public dialog: MatDialog
+  ) {
    }
 
   ngOnInit(): void {
@@ -124,6 +128,17 @@ export class EmployComponent {
     this.viewMode = this.viewMode === 'table' ? 'card' : 'table';
   }
 
+  assignAsset(assetData: string| null | undefined): void {
+    const dialogRef = this.dialog.open(AssetmappingdialogComponent, {
+      backdropClass: "hello",
+      autoFocus: false,
+      data: { assetData } // Pass the asset value here
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   }
 

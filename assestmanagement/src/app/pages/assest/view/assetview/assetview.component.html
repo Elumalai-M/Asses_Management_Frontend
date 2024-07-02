@@ -15,13 +15,13 @@
         <tr>
           <th scope="col"></th>
           <th scope="col">Asset Name</th>
-          <th scope="col">Operational Status</th>
           <th scope="col">Model Number</th>
           <th scope="col">Serial Number</th>
           <th scope="col">Brand</th>
-          <th scope="col">Cost</th>
-          <th scope="col">Status</th>
-          <th scope="col">AssetType</th>
+          <th scope="col">Config</th>
+          <th scope="col">Vendor Name</th>
+          <th scope="col">Vendor Rent</th>
+          <!-- <th scope="col">AssetType</th> -->
           <th scope="col">Assign</th>
         </tr>
       </thead>
@@ -29,13 +29,13 @@
         <tr *ngFor="let assests of filterDataList; let i = index">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ assests?.asset?.assetName }}</td>
-          <td>{{ assests?.asset?.operationalStatus }}</td>
           <td>{{ assests?.asset?.modelNumber }}</td>
           <td>{{ assests?.asset?.serialNumber }}</td>
           <td>{{ assests?.asset?.brand }}</td>
-          <td>{{ assests?.asset?.cost }}</td>
-          <td>{{ assests?.asset?.status }}</td>
-          <td>{{ assests?.asset?.assetType }}</td>
+          <td>{{ assests?.itasset?.processor }} / {{ assests?.itasset?.generation }} / {{ assests?.itasset?.ram }} / {{ assests?.itasset?.storageCapacity }}</td>
+          <td>{{ assests?.asset?.vendors?.vendorName ? assests.asset.vendors.vendorName : 'Ladera' }}</td>
+          <td>{{ assests?.asset?.rent }}</td>
+          <!-- <td>{{ assests?.asset?.assetType }}</td> -->
           <td>
             <button  (click)="assignAsset(assests?.asset?.assetId)">{{ assests?.asset?.status }}</button>
           </td>
